@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!--Admin-->
+    <section 
+        class="d-flex flex-column justify-content-center align-items-center p-5"
+        style="height: 100vh; width: 100vw;"
+    >
+        <!--Title-->
+        <h1>Administrador</h1>
+        <!--Add food-->
+        <!--Option to add food-->
+        <div class="d-flex flex-column justify-content-center align-items-center w-100 h-100" >
+            <div 
+                class="d-flex flex-column justify-content-center align-items-center bg-dark w-25 rounded p-4"
+                style="cursor: pointer;"
+                data-bs-toggle="modal" 
+                data-bs-target="#addFoodFormModal"
+            >
+                <img 
+                    alt=""
+                    class="rounded mb-3"
+                    src="https://png.pngtree.com/element_our/md/20180515/md_f7b6c861bd80a6dfd15d04c4919ff73e.jpg"
+                    width="100"
+                >
+                <h3 class="text-light">Añadir comida</h3>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="addFoodFormModal" tabindex="-1" aria-labelledby="addFoodFormModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addFoodFormModalLabel">Añadir al menú</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!--Form-->
+                <form>
+                    <!--Name-->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <!--Description-->
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción:</label>
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                    </div>
+                    <!--Price-->
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Precio:</label>
+                        <input type="number" class="form-control" id="price" min="0">
+                    </div>
+                    <!--Image-->
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Imagen:</label>
+                        <input type="text" class="form-control" id="image" placeholder="Url de la imagen">
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <!--Administrator logic-->
+    <script src="js/administrator.js"></script>
+</body>
+</html>
