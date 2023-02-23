@@ -19,10 +19,11 @@
         <!--Title-->
         <h1>Administrador</h1>
         <!--Add food-->
-        <!--Option to add food-->
-        <div class="d-flex flex-column justify-content-center align-items-center w-100 h-100" >
+        <!--Options-->
+        <div class="d-flex flex-row flex-wrap justify-content-around align-items-center w-100 h-100" >
+            <!--Add food option-->
             <div 
-                class="d-flex flex-column justify-content-center align-items-center bg-dark w-25 rounded p-4"
+                class="d-flex flex-column justify-content-center align-items-center bg-dark w-25 rounded p-4 h-50"
                 style="cursor: pointer;"
                 data-bs-toggle="modal" 
                 data-bs-target="#addFoodFormModal"
@@ -31,10 +32,36 @@
                     alt=""
                     class="rounded mb-3"
                     src="https://png.pngtree.com/element_our/md/20180515/md_f7b6c861bd80a6dfd15d04c4919ff73e.jpg"
-                    width="100"
+                    height="100"
                 >
-                <h3 class="text-light">Añadir comida</h3>
+                <h3 class="text-light text-center">Añadir comida</h3>
             </div>
+            <!--See general orders info and status-->
+            <div 
+            class="d-flex flex-column justify-content-center align-items-center bg-dark w-25 rounded p-4 h-50"
+            style="cursor: pointer;"
+            >
+                <img 
+                alt=""
+                    class="rounded mb-3"
+                    src="https://static.vecteezy.com/system/resources/previews/002/722/463/original/check-list-sign-flat-icon-illustration-free-vector.jpg"
+                    height="100"
+                >
+                    <h3 class="text-light text-center">Estado de las ordenes</h3>
+                </div>
+                <!--See complete and cancel orders-->
+                <div 
+                class="d-flex flex-column justify-content-center align-items-center bg-dark w-25 rounded p-4 h-50"
+                    style="cursor: pointer;"
+                >
+                    <img 
+                        alt=""
+                        class="rounded mb-3"
+                        src="https://www.codigotrading.com/wp-content/uploads/2022/02/trading.codigo.jpg"
+                        height="100"
+                    >
+                    <h3 class="text-light text-center">Resultado de las ordenes</h3>
+                </div>
         </div>
         <!-- Register modal -->
         <div class="modal fade" id="addFoodFormModal" tabindex="-1" aria-labelledby="addFoodFormModalLabel" aria-hidden="true">
