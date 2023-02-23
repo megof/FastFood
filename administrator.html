@@ -14,6 +14,7 @@
     <section 
         class="d-flex flex-column justify-content-center align-items-center p-5"
         style="height: 100vh; width: 100vw;"
+        id="app"
     >
         <!--Title-->
         <h1>Administrador</h1>
@@ -35,7 +36,7 @@
                 <h3 class="text-light">Añadir comida</h3>
             </div>
         </div>
-        <!-- Modal -->
+        <!-- Register modal -->
         <div class="modal fade" id="addFoodFormModal" tabindex="-1" aria-labelledby="addFoodFormModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -49,33 +50,56 @@
                     <!--Name-->
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" id="name" v-model="name">
                     </div>
-                    <!--Description-->
+                    <!--Short description-->
                     <div class="mb-3">
-                        <label for="description" class="form-label">Descripción:</label>
-                        <textarea class="form-control" id="description" rows="3"></textarea>
+                        <label for="shortDescription" class="form-label">Descripción corta:</label>
+                        <input type="text" class="form-control" id="shortDescription" v-model="shortDescription">
+                    </div>
+                    <!--Long description-->
+                    <div class="mb-3">
+                        <label for="longDescription" class="form-label">Descripción larga:</label>
+                        <textarea class="form-control" id="longDescription" rows="3" v-model="longDescription"></textarea>
                     </div>
                     <!--Price-->
                     <div class="mb-3">
                         <label for="price" class="form-label">Precio:</label>
-                        <input type="number" class="form-control" id="price" min="0">
+                        <input type="number" class="form-control" id="price" min="0" v-model="price">
+                    </div>
+                    <!--Category-->
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Categoría:</label>
+                        <select class="form-select" id="category" v-model="category">
+                            <option selected disabled >Selecciona una categoría</option>
+                            <option value="burger">Hamburguesa</option>
+                            <option value="hotDog">Perro Caliente</option>
+                        </select>
                     </div>
                     <!--Image-->
                     <div class="mb-3">
                         <label for="image" class="form-label">Imagen:</label>
-                        <input type="text" class="form-control" id="image" placeholder="Url de la imagen">
+                        <input 
+                            class="form-control"
+                            id="image"
+                            placeholder="URL de la imagen (Deja en blanco para usar el predefinido)"
+                            type="text"
+                            v-model="image"
+                        >
                     </div>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-primary" @click="addFood">Agregar</button>
               </div>
             </div>
           </div>
         </div>
     </section>
+    <!--Swal-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
