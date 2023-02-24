@@ -37,8 +37,9 @@ const app = createApp({
             longDescription: "",
             shortDescription: "",
             price: "",
+            units: "",
             category: "",
-            image: "",
+            image: ""
         }
     },
     // Mounted
@@ -179,7 +180,7 @@ const app = createApp({
         // Validate inputs
         validateInputs() {
             // Check if inputs are empty
-            if (this.name === "" || this.shortDescription === "" || this.longDescription === "" || this.price === "" || this.category === "") {
+            if (this.name === "" || this.shortDescription === "" || this.longDescription === "" || this.price == "" || this.units == "" || this.category === "") {
                 // Show alert
                 swal("Error", "Todos los campos son obligatorios", "error");
                 // Return false
@@ -195,6 +196,7 @@ const app = createApp({
             this.longDescription = "";
             this.shortDescription = "";
             this.price = "";
+            this.units = "";
             this.category = "";
             this.image = "";
         },
@@ -211,6 +213,7 @@ const app = createApp({
                     longDescription: this.longDescription,
                     shortDescription: this.shortDescription,
                     price: this.price,
+                    units: this.units,
                     category: this.category,
                     image: this.image,
                 };
