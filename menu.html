@@ -22,7 +22,7 @@
                         </div>
                         <div class="card-footer bg-white">
                             <h5 class="card-text text-center">${{item.price.toLocaleString('es-ES',{style:'currency',currency:'COP',maximumFractionDigits: 0})}}</h5>
-                            <a href="#" class="btn btn-dark w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</a>
+                            <a href="#" class="btn btn-dark w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" :id="item.id" @click="deployModal">Agregar</a>
                         </div>
                     </div>
                 </div>
@@ -34,22 +34,22 @@
                 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h1 class="modal-title  display-6 fw-normal" id="exampleModalLabel">Hamburguesa Mexicana</h1>
+                    <h1 class="modal-title  display-6 fw-normal" id="exampleModalLabel">{{modalInformation.title}}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body w-75 mx-auto">
-                        <img src="./img/hamburguesa-mexicana.jpg" alt="mexicana" class=" d-block mx-auto w-100">
-                        <p class="card-text text-center mt-3"> Aquí va la descripción ya más detallada del producto a comprar</p>
+                        <img :src="modalInformation.img" alt="mexicana" class=" d-block mx-auto w-100">
+                        <p class="card-text text-center mt-3"> {{modalInformation.detailedDescription}}</p>
                         <div class="d-flex justify-content-center align-items-center  mb-3  mx-auto  ">
-                            <button class="btn btn-dark">-</button>
-                            <input type="number" readonly class=" w-75 h-100 py-1">
-                            <button class="btn btn-dark">+</button>
+                            <button class="btn btn-dark" @click="decreaseUnits">-</button>
+                            <input type="number" readonly class=" w-75 h-100 py-1 text-center " v-model="numberOfUnits">
+                            <button class="btn btn-dark" @click="increaseUnits">+</button>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="w-75 mx-auto d-flex justify-content-center gap-3">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-dark">Confirmar el pedido</button>
+                            <button type="button" class="btn btn-dark" @click="confirmOrder">Confirmar el pedido</button>
                         </div>
                       
                     </div>
