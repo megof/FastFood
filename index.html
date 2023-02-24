@@ -24,6 +24,9 @@
 </head>
 
 <body>
+  <div id="root">
+    
+ 
     <header>
 
         <div class="navbar navbar-expand-lg navbar-dark nav-bar-home" id="navbar">
@@ -119,121 +122,85 @@
         </div>
     </header>
     <!-- </header> -->
+    <!-- Cards -->
 
     <div class="row my-5">
         <h2 class="text-center p-3 text-menu" id="nuestroMenu">Nuestro Menú</h2>
         <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hamburguesas</h3>
         <div
             class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row  gap-4 my-3">
-            <div class="card">
-                <img src="./assets/1.jpg" class="card-img-top" alt="b-1">
+           
+              <div class="card h-100" v-for="(item,index) in dataMenu.filter(el=>el.category==='burger')">
+                <img :src="item.image" class="card-img-top" alt="b-1">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Burguer 1</h5>
-                    <p class="card-text text-center text-400">Descripcion</p>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
-                    </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
+                    <h5 class="card-title text-center">{{item.name}}</h5>
+                    <p class="card-text text-center text-400">{{item.shortDescription}}</p> 
                 </div>
-            </div>
-            <div class="card">
-                <img src="./assets/2.jpg" class="card-img-top" alt="b-2">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Burguer 2</h5>
-                    <p class="card-text text-center text-400">Descripcion</p>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
-                    </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
+                <div class="card-footer">
+                  <h5 class="card-text text-center">${{item.price.toLocaleString('es-ES',{style:'currency',currency:'COP',maximumFractionDigits: 0})}}</h5>
+                  <div class="cart d-flex justify-content-center align-items-center gap-2">
+                      <button class="btn btn-primary btn-first" @click="decreaseUnits" :data-id="item.id">-</button>
+                      <input class="form-control text-center" type="number" placeholder="Cantidad" readonly :value="item.units">
+                      <button class="btn btn-primary btn-first" @click="increaseUnits" :data-id="item.id">+</button>
+                  </div>
+                  <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" :id="item.id" @click="deployModal">Agregar Al Carrito</button>
                 </div>
-            </div>
-            <div class="card">
-                <img src="./assets/3.jpg" class="card-img-top" alt="b-3">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Burguer 3</h5>
-                    <p class="card-text text-center text-400 ">Descripcion</p>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
-                    </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./assets/4.jpg" class="card-img-top" alt="b-4">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Burguer 4</h5>
-                    <p class="card-text text-center text-400">Descripcion</p>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
-                    </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
-                </div>
-            </div>
+              </div>
+           
+           
+          
+           
         </div>
         <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hot Dogs</h3>
         <div
             class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row  gap-4 my-3">
-            <div class="card">
-                <img src="./assets/dog-1.jpg" class="card-img-top" alt="h-1">
+            <div class="card h-100" v-for="item in dataMenu.filter(el=>el.category==='hotDog')">
+                <img :src="item.image" class="card-img-top" alt="h-1">
                 <div class="card-body">
-                    <h5 class="card-title text-center">HotDog 1</h5>
-                    <p class="card-text text-center text-400">Descripcion</p>
+                    <h5 class="card-title text-center">{{item.name}}</h5>
+                    <p class="card-text text-center text-400">{{item.shortDescription}}</p>
+                </div>
+                <div class="card-footer">
+                  <h5 class="card-text text-center">${{item.price.toLocaleString('es-ES',{style:'currency',currency:'COP',maximumFractionDigits: 0})}}</h5>
                     <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
+                        <button class="btn btn-primary btn-first" @click="decreaseUnits" :data-id="item.id">-</button>
+                        <input class="form-control text-center" type="number" placeholder="Cantidad" readonly :value="item.units">
+                        <button class="btn btn-primary btn-first" @click="increaseUnits" :data-id="item.id">+</button>
                     </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
+                    <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" :id="item.id" @click="deployModal">Agregar Al Carrito</button>
                 </div>
             </div>
-            <div class="card">
-                <img src="./assets/dog-2.jpg" class="card-img-top" alt="h-2">
-                <div class="card-body">
-                    <h5 class="card-title text-center">HotDog 2</h5>
-                    <p class="card-text text-center text-400">Descripcion</p>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
-                    </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./assets/dog-3.jpg" class="card-img-top" alt="h-3">
-                <div class="card-body">
-                    <h5 class="card-title text-center">HotDog 3</h5>
-                    <p class="card-text text-center text-400">Descripcion</p>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
-                    </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./assets/dog-4.jpg" class="card-img-top" alt="h-4">
-                <div class="card-body">
-                    <h5 class="card-title text-center">HotDog 4</h5>
-                    <p class="card-text text-center text-400">Descripcion</p>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad">
-                        <button class="btn btn-primary btn-first">+</button>
-                    </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3">Agregar Al Carrito</button>
-                </div>
-            </div>
+         
+          
+          
         </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                  <h1 class="modal-title  display-6 fw-normal" id="exampleModalLabel">{{modalInformation.name}}</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body w-75 mx-auto">
+                      <img :src="modalInformation.image" alt="mexicana" class=" d-block mx-auto w-100">
+                      <p class="card-text text-center mt-3"> {{modalInformation.longDescription}}</p>
+                      <div class="d-flex justify-content-center align-items-center  mb-3  mx-auto  ">
+                          <button class="btn btn-dark" @click="decreaseUnitsModal">-</button>
+                          <input type="number" readonly class=" w-75  py-1 text-center " v-model="numberOfUnits">
+                          <button class="btn btn-dark" @click="increaseUnitsModal">+</button>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <div class="w-75 mx-auto d-flex justify-content-center gap-3">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-dark" @click="confirmOrder">Confirmar el pedido</button>
+                      </div>
+                    
+                  </div>
+              </div>
+              </div>
+          </div>
 
     </div>
 
@@ -295,12 +262,13 @@
             </ul>
         </div>
     </div>
-
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
