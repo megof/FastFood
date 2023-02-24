@@ -9,6 +9,13 @@ const app = createApp({
     // Variables
     data() {
         return {
+            // Render
+            render: {
+                options: true,
+                ordersInfo: false,
+            },
+            // Orders
+            orders: dataOrders,
             // Food
             food: [],
             // Inputs
@@ -22,11 +29,35 @@ const app = createApp({
     },
     // Mounted
     mounted() {
+        // Get orders from local storage
+        this.getOrdersFromLocalStorage();
         // Get products from local storage
         this.getFoodFromLocalStorage();
     },
     // Methods
     methods: {
+        // Go to options
+        goToAdminPanel(){
+            // Set render
+            this.render.options = true;
+            this.render.ordersInfo = false;
+        },
+        // go to orders info
+        goToOrdersInfo() {
+            // Set render
+            this.render.options = false;
+            this.render.ordersInfo = true;
+        },
+        // Get orders from local storage
+        getOrdersFromLocalStorage() {
+            // Get orders
+            const orders = JSON.parse(localStorage.getItem("orders"));
+            // Check if orders exist
+            if (orders) {
+                // Set orders
+                this.orders = orders;
+            }
+        },
         // Get products from local storage
         getFoodFromLocalStorage() {
             // Get food

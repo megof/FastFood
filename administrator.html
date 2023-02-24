@@ -9,12 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!--Admin-->
+<body id="app">
+    <!--Admin options-->
     <section 
         class="d-flex flex-column justify-content-center align-items-center p-5"
         style="height: 100vh; width: 100vw;"
-        id="app"
+        v-if="render.options"
+        v-cloak
     >
         <!--Title-->
         <h1>Administrador</h1>
@@ -40,6 +41,7 @@
             <div 
             class="d-flex flex-column justify-content-center align-items-center bg-dark w-25 rounded p-4 h-50"
             style="cursor: pointer;"
+            @click="goToOrdersInfo"
             >
                 <img 
                 alt=""
@@ -124,12 +126,54 @@
           </div>
         </div>
     </section>
+    <!--Orders info-->
+    <section 
+        class="d-flex flex-column justify-content-center align-items-center"
+        style="width: 100%; height: 100%;"
+        v-if="render.ordersInfo"
+        v-cloak
+    >
+        <nav 
+            class="d-flex flex-row justify-content-start w-100 p-3"
+            style="position: absolute; top: 0; left: 0; z-index: 1;"
+        >
+            <button class="btn btn-danger" @click="goToAdminPanel">Volver</button>
+        </nav>
+        <h1 class="text-center">Estado de las ordenes</h1>
+        <div class="container w-100 d-flex justify-content-center align-items-center p-5">
+            <table class="table table-dark table hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">ID</th>
+                        <th scope="col" class="text-center">Estado</th>
+                        <th scope="col" class="text-center">Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="order in orders" :key="order.id">
+                        <th class="text-center" scope="row">{{order.id}}</th>
+                        <td class="text-center">{{order.status}}</td>
+                        <td class="d-flex justify-content-center align-items-center">
+                            <button 
+                                class="btn btn-warning"
+                                @click="showOrderDetails(order)"
+                            >
+                                Ver detalles
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
     <!--Swal-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <!--Data orders-->
+    <script src="js/dataOrders.js"></script>
     <!--Administrator logic-->
     <script src="js/administrator.js"></script>
 </body>
