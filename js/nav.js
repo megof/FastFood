@@ -1,6 +1,11 @@
-export default (() => {
+const navBar = () => {
   const $navbar = document.getElementById("navbar");
-  window.addEventListener("scroll", (e) => {
+  window.addEventListener("DOMContentLoaded", () => {
+    if (window.screenY > 52) {
+      $navbar.classList.add("navbar-scroll");
+    }
+  });
+  window.addEventListener("scroll", () => {
     if (window.scrollY > 52) {
       $navbar.classList.add("navbar-scroll");
     } else {
@@ -13,4 +18,6 @@ export default (() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
-})();
+};
+
+export default navBar;

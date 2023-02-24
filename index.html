@@ -24,245 +24,274 @@
 </head>
 
 <body>
-  <div id="root">
-    
- 
-    <header>
+    <div id="root">
 
-        <div class="navbar navbar-expand-lg navbar-dark nav-bar-home" id="navbar">
-            <div class="container d-flex justify-content-center align-items-center">
-                <div class="navbar-expand-lg d-flex justify-content-center align-items-center">
-                    <a href="index.html" class="navbar-brand  fs-2 fw-bold text-uppercase p-3 fw-semibold"><span
-                            class="ms-4 logo-container">LA</span><img class="logo m-2" src="/assets/B-2.png"
-                            alt="Logo"></a>
-                    <button class="navbar-toggler m-3" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navegacion"><span class="navbar-toggler-icon"></span></button>
-                </div>
-                <div id="navegacion" class="collapse navbar-collapse nav-bar-links">
-                    <nav
-                        class="navbar-nav container d-flex flex-md-row justify-content-center align-items-center text-center gap-4 my-3">
-                        <a class=" text-decoration-none  w-50 d-flex justify-content-center" href="#nuestroMenu"><span
-                                class="material-symbols-outlined">
-                                restaurant_menu
-                            </span>Menú</a>
-                        <a class="text-decoration-none w-50 d-flex justify-content-center" href="#users"
-                            data-bs-toggle="offcanvas"><span class="material-symbols-outlined">
-                                login
-                            </span>Login</a>
-                        <a class="text-decoration-none w-50 d-flex justify-content-center shopping" href="#menu"
-                            data-bs-toggle="offcanvas"><span class="material-symbols-outlined ">
-                                shopping_cart
-                            </span></a>
-                    </nav>
+        <!-- Header -->
+        <header>
+
+            <div class="navbar navbar-expand-lg navbar-dark nav-bar-home" id="navbar">
+                <div class="container d-flex justify-content-center align-items-center">
+                    <div class="navbar-expand-lg d-flex justify-content-center align-items-center">
+                        <a href="index.html" class="navbar-brand  fs-2 fw-bold text-uppercase p-3 fw-semibold"><span
+                                class="ms-4 logo-container">LA</span><img class="logo m-2" src="/assets/B-2.png"
+                                alt="Logo"></a>
+                        <button class="navbar-toggler m-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navegacion"><span class="navbar-toggler-icon"></span></button>
+                    </div>
+                    <div id="navegacion" class="collapse navbar-collapse nav-bar-links">
+                        <nav
+                            class="navbar-nav container d-flex flex-md-row justify-content-center align-items-center text-center gap-4 my-3">
+                            <a class=" text-decoration-none  w-50 d-flex justify-content-center"
+                                href="#nuestroMenu"><span class="material-symbols-outlined">
+                                    restaurant_menu
+                                </span>Menú</a>
+                            <a class="text-decoration-none w-50 d-flex justify-content-center" href="#users"
+                                data-bs-toggle="offcanvas"><span class="material-symbols-outlined">
+                                    login
+                                </span>Login</a>
+                            <a class="text-decoration-none w-50 d-flex justify-content-center shopping" href="#menu"
+                                data-bs-toggle="offcanvas"><span
+                                    class="material-symbols-outlined d-flex justify-content-center align-items-center">
+                                    shopping_cart <sup class="text-center item-in-cart">0</sup>
+                                    <!--- La funcion de agregar el carrito debe cambiar la cantidad ------>
+                                </span></a>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="hero-img">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="home-content">
-                            <div class="text-1 container-md">
-                                <h2 class="text-b">La B hamburgers</h2>
-                                <div class="star d-flex justify-content-center align-items-center gap-4">
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
+            <div class="hero-img">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="home-content">
+                                <div class="text-1 container-md">
+                                    <h2 class="text-b">La B hamburgers</h2>
+                                    <div class="star d-flex justify-content-center align-items-center gap-4">
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                    </div>
+                                    <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
                                 </div>
-                                <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="home-content-2">
+                                <div class="text-1 container-md">
+                                    <h2 class="text-b">La B hamburgers</h2>
+                                    <div class="star d-flex justify-content-center align-items-center gap-4">
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                    </div>
+                                    <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="home-content-3">
+                                <div class="text-1 container-md">
+                                    <h2 class="text-b">La B hamburgers</h2>
+                                    <div class="star d-flex justify-content-center align-items-center gap-4">
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                    </div>
+                                    <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="home-content-2">
-                            <div class="text-1 container-md">
-                                <h2 class="text-b">La B hamburgers</h2>
-                                <div class="star d-flex justify-content-center align-items-center gap-4">
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                </div>
-                                <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="home-content-3">
-                            <div class="text-1 container-md">
-                                <h2 class="text-b">La B hamburgers</h2>
-                                <div class="star d-flex justify-content-center align-items-center gap-4">
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                    <i class="fas fa-star fs-1"></i>
-                                </div>
-                                <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
-    </header>
-    <!-- </header> -->
-    <!-- Cards -->
+        </header>
+        <!-- Fin Header -->
 
-    <div class="row my-5">
-        <h2 class="text-center p-3 text-menu" id="nuestroMenu">Nuestro Menú</h2>
-        <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hamburguesas</h3>
-        <div
-            class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row  gap-4 my-3">
-           
-              <div class="card h-100" v-for="(item,index) in dataMenu.filter(el=>el.category==='burger')">
-                <img :src="item.image" class="card-img-top" alt="b-1">
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{item.name}}</h5>
-                    <p class="card-text text-center text-400">{{item.shortDescription}}</p> 
-                </div>
-                <div class="card-footer">
-                  <h5 class="card-text text-center">${{item.price.toLocaleString('es-ES',{style:'currency',currency:'COP',maximumFractionDigits: 0})}}</h5>
-                  <div class="cart d-flex justify-content-center align-items-center gap-2">
-                      <button class="btn btn-primary btn-first" @click="decreaseUnits" :data-id="item.id">-</button>
-                      <input class="form-control text-center" type="number" placeholder="Cantidad" readonly :value="item.units">
-                      <button class="btn btn-primary btn-first" @click="increaseUnits" :data-id="item.id">+</button>
-                  </div>
-                  <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" :id="item.id" @click="deployModal">Agregar Al Carrito</button>
-                </div>
-              </div>
-           
-           
-          
-           
-        </div>
-        <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hot Dogs</h3>
-        <div
-            class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row  gap-4 my-3">
-            <div class="card h-100" v-for="item in dataMenu.filter(el=>el.category==='hotDog')">
-                <img :src="item.image" class="card-img-top" alt="h-1">
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{item.name}}</h5>
-                    <p class="card-text text-center text-400">{{item.shortDescription}}</p>
-                </div>
-                <div class="card-footer">
-                  <h5 class="card-text text-center">${{item.price.toLocaleString('es-ES',{style:'currency',currency:'COP',maximumFractionDigits: 0})}}</h5>
-                    <div class="cart d-flex justify-content-center align-items-center gap-2">
-                        <button class="btn btn-primary btn-first" @click="decreaseUnits" :data-id="item.id">-</button>
-                        <input class="form-control text-center" type="number" placeholder="Cantidad" readonly :value="item.units">
-                        <button class="btn btn-primary btn-first" @click="increaseUnits" :data-id="item.id">+</button>
+        <!-- Cards -->
+        <div class="row my-5">
+            <h2 class="text-center p-3 text-menu" id="nuestroMenu">Nuestro Menú</h2>
+            <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hamburguesas</h3>
+            <div
+                class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row  gap-4 my-3">
+
+                <div class="card h-100" v-for="(item,index) in dataMenu.filter(el=>el.category==='burger')">
+                    <img :src="item.image" class="card-img-top" alt="b-1">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{item.name}}</h5>
+                        <p class="card-text text-center text-400">{{item.shortDescription}}</p>
                     </div>
-                    <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" :id="item.id" @click="deployModal">Agregar Al Carrito</button>
+                    <div class="card-footer">
+                        <h5 class="card-text text-center">
+                            ${{item.price.toLocaleString('es-ES',{style:'currency',currency:'COP',maximumFractionDigits:
+                            0})}}</h5>
+                        <div class="cart d-flex justify-content-center align-items-center gap-2">
+                            <button class="btn btn-primary btn-first" @click="decreaseUnits"
+                                :data-id="item.id">-</button>
+                            <input class="form-control text-center" type="number" placeholder="Cantidad" readonly
+                                :value="item.units">
+                            <button class="btn btn-primary btn-first" @click="increaseUnits"
+                                :data-id="item.id">+</button>
+                        </div>
+                        <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" :id="item.id" @click="deployModal">Agregar Al
+                            Carrito</button>
+                    </div>
                 </div>
+
+
+
+
             </div>
-         
-          
-          
-        </div>
+            <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hot Dogs</h3>
+            <div
+                class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row  gap-4 my-3">
+                <div class="card h-100" v-for="item in dataMenu.filter(el=>el.category==='hotDog')">
+                    <img :src="item.image" class="card-img-top" alt="h-1">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{item.name}}</h5>
+                        <p class="card-text text-center text-400">{{item.shortDescription}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <h5 class="card-text text-center">
+                            ${{item.price.toLocaleString('es-ES',{style:'currency',currency:'COP',maximumFractionDigits:
+                            0})}}</h5>
+                        <div class="cart d-flex justify-content-center align-items-center gap-2">
+                            <button class="btn btn-primary btn-first" @click="decreaseUnits"
+                                :data-id="item.id">-</button>
+                            <input class="form-control text-center" type="number" placeholder="Cantidad" readonly
+                                :value="item.units">
+                            <button class="btn btn-primary btn-first" @click="increaseUnits"
+                                :data-id="item.id">+</button>
+                        </div>
+                        <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" :id="item.id" @click="deployModal">Agregar Al
+                            Carrito</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Fin Cards -->
+
+
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                  <h1 class="modal-title  display-6 fw-normal" id="exampleModalLabel">{{modalInformation.name}}</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body w-75 mx-auto">
-                      <img :src="modalInformation.image" alt="mexicana" class=" d-block mx-auto w-100">
-                      <p class="card-text text-center mt-3"> {{modalInformation.longDescription}}</p>
-                      <div class="d-flex justify-content-center align-items-center  mb-3  mx-auto  ">
-                          <button class="btn btn-dark" @click="decreaseUnitsModal">-</button>
-                          <input type="number" readonly class=" w-75  py-1 text-center " v-model="numberOfUnits">
-                          <button class="btn btn-dark" @click="increaseUnitsModal">+</button>
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                      <div class="w-75 mx-auto d-flex justify-content-center gap-3">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="button" class="btn btn-dark" @click="confirmOrder">Confirmar el pedido</button>
-                      </div>
-                    
-                  </div>
-              </div>
-              </div>
-          </div>
+            <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title  display-6 fw-normal" id="exampleModalLabel">
+                                {{modalInformation.name}}</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body w-75 mx-auto">
+                            <img :src="modalInformation.image" alt="mexicana" class=" d-block mx-auto w-100 rounded">
+                            <p class="card-text text-center mt-3"> {{modalInformation.longDescription}}</p>
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <button class=" btn btn-primary btn-first text-center" @click="decreaseUnitsModal">
+                                    -</button>
+                                <input type="number" readonly class="form-control text-center" v-model="
+                                    numberOfUnits">
+                                <button class="btn btn-primary btn-first text-center"
+                                    @click=" increaseUnitsModal">+</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="w-75 mx-auto d-flex justify-content-center gap-3">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary btn-first text-center"
+                                    @click=" confirmOrder">Confirmar el
+                                    pedido</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Fin Modal -->
+
+        <!-- Button Scroll Top -->
+        <button class="btn btn-primary btn-scroll"><i class="fas fa-angle-up"></i></button>
+        <!-- Fin Button Scroll Top -->
+
+
+
+
+
+
+
+
+
+        <!-- OFF CANVAS -->
+        <div id="menu" class="offcanvas offcanvas-end text-bg-dark font-canvas">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title text-center"><span class="material-symbols-outlined fs-1">
+                        shopping_cart
+                    </span>Carrito De Compras</h2>
+                <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <h3 class="text-center">Tu Carrito</h3>
+                <ul class="nav flex-column">
+                    <li class="nav-item text-center">
+                        <span>Product #1</span>
+                    </li>
+                    <li class="nav-item text-center">
+                        <span>Product #2</span>
+                    </li>
+                    <li class="nav-item text-center">
+                        <span>Product #3</span>
+                    </li>
+                    <li class="nav-item text-center">
+                        <span>Product #4</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="users" class="offcanvas offcanvas-start text-bg-dark font-canvas">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title text-center"><i class="fa-regular fa-user fs-1"></i> Escoge Tu Rol</h2>
+                <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-column-reverse gap-4">
+                    <li class="nav-item text-center">
+                        <h2>Administrador</h2>
+                    </li>
+                    <li class="nav-item text-center">
+                        <h2>Cocinero</span>
+                    </li>
+                    <li class="nav-item text-center">
+                        <h2>Mesero</h2>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- FIN OFF CANVAS -->
+
 
     </div>
 
-    <button class="btn btn-primary btn-scroll"><i class="fas fa-angle-up"></i></button>
-
-
-
-
-
-
-
-
-
-
-
-    <!-- OFF CANVAS -->
-    <div id="menu" class="offcanvas offcanvas-end text-bg-dark font-canvas">
-        <div class="offcanvas-header">
-            <h2 class="offcanvas-title text-center"><span class="material-symbols-outlined fs-1">
-                    shopping_cart
-                </span>Carrito De Compras</h2>
-            <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <h3 class="text-center">Tu Carrito</h3>
-            <ul class="nav flex-column">
-                <li class="nav-item text-center">
-                    <span>Product #1</span>
-                </li>
-                <li class="nav-item text-center">
-                    <span>Product #2</span>
-                </li>
-                <li class="nav-item text-center">
-                    <span>Product #3</span>
-                </li>
-                <li class="nav-item text-center">
-                    <span>Product #4</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="users" class="offcanvas offcanvas-start text-bg-dark font-canvas">
-        <div class="offcanvas-header">
-            <h2 class="offcanvas-title text-center"><i class="fa-regular fa-user fs-1"></i> Escoge Tu Rol</h2>
-            <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="nav flex-column-reverse gap-4">
-                <li class="nav-item text-center">
-                    <h2>Administrador</h2>
-                </li>
-                <li class="nav-item text-center">
-                    <h2>Cocinero</span>
-                </li>
-                <li class="nav-item text-center">
-                    <h2>Mesero</h2>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
