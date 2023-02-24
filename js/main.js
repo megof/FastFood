@@ -63,8 +63,9 @@ createApp({
     confirmOrder () {
       this.currentOrder = {
         id: Math.round(Math.random() * 500),
+        idProduct:this.modalInformation.id,
         img: this.modalInformation.image,
-        units: this.numberOfUnits,
+        amount: this.numberOfUnits,
         name: this.modalInformation.name,
         price: this.modalInformation.price,
         priceTotal: this.modalInformation.price * this.numberOfUnits
