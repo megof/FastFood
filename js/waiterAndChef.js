@@ -1,6 +1,8 @@
 const app = Vue.createApp({
   data () {
     return {
+      // Order info
+      order: {},
       workers: dataWorkers,
       orders: dataOrders,
       orderToChange: null,
@@ -9,6 +11,48 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    // Set order details
+    setOrderDetails(order) {
+      // Set order product details
+      this.setProductDetailsAtOrder(order);
+    },
+    // Set product details at order
+    setProductDetailsAtOrder(order) {
+        for (let i = 0; i < order.products.length; i++) {
+            // Get product
+            const productInfo = this.food.find(food => food.id == order.products[i].id);
+            // Set product info
+            order.products[i] = {
+                total: order.products[i].amount * productInfo.price,
+                ...order.products[i],
+                ...productInfo,
+            };
+            // Log product info
+            console.log(order.products[i]);
+        }
+
+    },
+    // Get products from local storage
+    getFoodFromLocalStorage() {
+      // Get food
+      const food = JSON.parse(localStorage.getItem("food"));
+      // Check if food exist
+      if (food) {
+          // Set food
+          this.food = food;
+      }
+      else {
+          // Set food
+          this.food = dataMenu;
+          // Save food at local storage
+          this.saveFoodAtLocalStorage();
+      }
+  },
+  // Save food at local storage
+  saveFoodAtLocalStorage() {
+      // Save food
+      localStorage.setItem("food", JSON.stringify(this.food));
+  },
     syncLocalStorage () {
       if (
         localStorage.getItem('workers') === null ||
@@ -80,6 +124,10 @@ const app = Vue.createApp({
   created () {
     this.syncLocalStorage()
     console.log('TIMEOUTSinicio', this.timeouts)
+  },
+  mounted () {
+    // Get products from local storage
+    this.getFoodFromLocalStorage();
   }
 })
 

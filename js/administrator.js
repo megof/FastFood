@@ -41,7 +41,7 @@ const app = createApp({
             longDescription: "",
             shortDescription: "",
             price: "",
-            units: "",
+            units: 1,
             category: "",
             image: ""
         }
@@ -78,6 +78,9 @@ const app = createApp({
         },
         // setOrderResults
         setOrderResults() {
+            // Clean order results
+            this.cleanOrderResults();
+            // Set order results
             this.orders.map(order => {
                 this.setProductDetailsAtOrder(order);
                 if (order.status === "Entregada") {
@@ -92,6 +95,25 @@ const app = createApp({
                     this.orderResults.pending.total += order.products.reduce((total, product) => total + product.total, 0);
                 }
             });
+        },
+        // Clean order results
+        cleanOrderResults() {
+            // Set order results
+            // Clean order results
+            this.orderResults = {
+                completed: {
+                    orders: 0,
+                    total: 0,
+                },
+                canceled: {
+                    orders: 0,
+                    total: 0,
+                },
+                pending: {
+                    orders: 0,
+                    total: 0,
+                }
+            }
         },
         // Set order details
         setOrderDetails(order) {
@@ -112,7 +134,6 @@ const app = createApp({
                     ...productInfo,
                 };
             }
-            console.log(order);
         },
         // Get orders from local storage
         getOrdersFromLocalStorage() {
