@@ -11,7 +11,8 @@ createApp({
       currentOrder: {}, //Esta es la orden actual, una de las tantas que se mostrará en el carrito de compras.
       ordersPlaced: [], //EStas son las ordenes que posteriormente se muestran en el carrito de compras
       ordersToPay: [],
-      currentTotal: null
+      currentTotal: null,
+      orders: []
     }
   },
   methods: {
@@ -63,7 +64,7 @@ createApp({
     confirmOrder () {
       this.currentOrder = {
         id: Math.round(Math.random() * 500),
-        idProduct:this.modalInformation.id,
+        idProduct: this.modalInformation.id,
         img: this.modalInformation.image,
         amount: this.numberOfUnits,
         name: this.modalInformation.name,
@@ -75,7 +76,7 @@ createApp({
         (acc, cur) => acc + cur.priceTotal,
         0
       )
-      localStorage.setItem('orders', JSON.stringify(this.ordersPlaced))
+      localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
       this.closeModal()
       Swal.fire({
         position: 'center',
@@ -95,15 +96,19 @@ createApp({
 
       this.ordersToPay.push({
         id: Math.round(Math.random() * 500),
-        products: this.ordersPlaced,
-        status: 'Pendiente de pago',
+        items: this.ordersPlaced,
+        state: 'Pendiente de pago',
         total: totalToPay
       })
 
-      localStorage.setItem('orderToPay', JSON.stringify(this.ordersToPay))
-      this.ordersPlaced.length=0
-      localStorage.setItem('orders', JSON.stringify(this.ordersPlaced))
+      localStorage.setItem('orders', JSON.stringify(this.ordersToPay))
+      this.ordersPlaced.length = 0
+      localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
       alert('aca se abre la pasarela de pagos')
+
+     //Luego cuando ya esta pago, hay que ambiar el estado de la orden
+     
+     
     },
     deleteOrderItem (id) {
       this.ordersPlaced = this.ordersPlaced.filter(order => {
@@ -113,7 +118,7 @@ createApp({
         (acc, cur) => acc + cur.priceTotal,
         0
       )
-      localStorage.setItem('orders', JSON.stringify(this.ordersPlaced))
+      localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
     }
   },
   beforeMount () {
@@ -126,8 +131,8 @@ createApp({
     }
 
     //Localstorage de las ordenes que van para el carrito.
-    if (localStorage.getItem('orders')) {
-      this.ordersPlaced = JSON.parse(localStorage.getItem('orders'))
+    if (localStorage.getItem('ordersPlaced')) {
+      this.ordersPlaced = JSON.parse(localStorage.getItem('ordersPlaced'))
     }
   },
   mounted () {
