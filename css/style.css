@@ -113,10 +113,6 @@ body {
   border-radius: 0.5rem !important;
 }
 
-.shopping-active {
-  animation: pulse-black 1.25s ease infinite;
-}
-
 .font-canvas {
   font-family: "Bungee", cursive;
 }
@@ -178,7 +174,24 @@ body {
   background-color: var(--color5) !important;
 }
 
-/* esta clase se le agrega al carrito cuando tenga items */
+.btn-pagar {
+  border: none !important;
+  background-color: var(--color-4) !important;
+  border: 2px solid transparent !important;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-pagar:hover {
+  color: var(--color-4);
+  background-color: transparent !important;
+  border: 2px solid var(--color-4) !important;
+}
+
+/* esta clase se le agrega al carrito es decir al elemento "a "que contiene la clase "shopping" cuando tenga items, esto con la finalizada de que la animacion refleje un cambio de state en la cantidad de articulos que tiene el carrito*/
+.shopping-active {
+  animation: pulse-black 1.25s ease infinite;
+}
+
 @keyframes pulse-black {
   0% {
     transform: scale(0.95);
