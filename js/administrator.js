@@ -14,8 +14,10 @@ const app = createApp({
                 options: true,
                 ordersInfo: false,
             },
+            // Order info
+            order: {},
             // Orders
-            orders: dataOrders,
+            orders: [],
             // Food
             food: [],
             // Inputs
@@ -48,6 +50,24 @@ const app = createApp({
             this.render.options = false;
             this.render.ordersInfo = true;
         },
+        // Set order details
+        setOrderDetails(order) {
+            // Set order info
+            this.order = order;
+            // Set order product details
+            for (let i = 0; i < this.order.products.length; i++) {
+                // Get product
+                const productInfo = this.food.find(food => food.id == this.order.products[i].id);
+                // Set product info
+                this.order.products[i] = {
+                    total: this.order.products[i].amount * productInfo.price,
+                    ...this.order.products[i],
+                    ...productInfo,
+                };
+            }
+            // log order
+            console.log(this.order);
+        },
         // Get orders from local storage
         getOrdersFromLocalStorage() {
             // Get orders
@@ -56,6 +76,11 @@ const app = createApp({
             if (orders) {
                 // Set orders
                 this.orders = orders;
+            } else {
+                // Set orders
+                this.orders = dataOrders;
+                // Save orders at local storage
+                this.saveOrdersAtLocalStorage();
             }
         },
         // Get products from local storage
@@ -67,6 +92,17 @@ const app = createApp({
                 // Set food
                 this.food = food;
             }
+            else {
+                // Set food
+                this.food = dataMenu;
+                // Save food at local storage
+                this.saveFoodAtLocalStorage();
+            }
+        },
+        // Save orders at local storage
+        saveOrdersAtLocalStorage() {
+            // Save orders
+            localStorage.setItem("orders", JSON.stringify(this.orders));
         },
         // Save food at local storage
         saveFoodAtLocalStorage() {

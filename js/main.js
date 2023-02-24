@@ -1,15 +1,27 @@
 const { createApp } = Vue;
+import dataMenu from './dataMenu.js'
 createApp({
     data() {
         return {
-            hotDogs: [],
-            burgher: []
+            dataMenu:[]
         }
     },
     methods: {
     },
-    mounted() {
+    beforeMount(){
+        console.log("Entró al beforeMount")
+        if(localStorage.getItem("food")){
+            this.dataMenu=JSON.parse(localStorage.getItem("food"))
+        }else{
+            this.dataMenu=dataMenu
+            localStorage.setItem("food",JSON.stringify(this.dataMenu))
+        }
     },
-    created() {        
+    mounted() {
+        
+    },
+    created() { 
+        
+              
     },
 }).mount("#root");
