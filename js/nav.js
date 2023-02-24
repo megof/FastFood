@@ -1,12 +1,12 @@
 const navBar = () => {
   const $navbar = document.getElementById("navbar");
   window.addEventListener("DOMContentLoaded", () => {
-    if (window.screenY > 52) {
+    if (window.screenY > 32) {
       $navbar.classList.add("navbar-scroll");
     }
   });
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 52) {
+    if (window.scrollY > 32) {
       $navbar.classList.add("navbar-scroll");
     } else {
       $navbar.classList.remove("navbar-scroll");
