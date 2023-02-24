@@ -26,24 +26,44 @@ const app = Vue.createApp({
       orders: [
         {
           id: 120,
-          item: 'hambuegesa',
+          item: 'hambuegesa 1',
           quantity: 2,
           state: 'Listo para entrega'
         },
         {
           id: 121,
-          item: 'perro',
+          item: 'perro 2',
           quantity: 1,
           state: 'Listo para entrega'
         },
         {
           id: 122,
-          item: 'hambuegesa criolla',
+          item: 'hambuegesa criolla 3',
+          quantity: 1,
+          state: 'Listo para entrega'
+        },
+        {
+          id: 123,
+          item: 'hambuegesa 4',
+          quantity: 2,
+          state: 'Listo para entrega'
+        },
+        {
+          id: 124,
+          item: 'perro 5',
+          quantity: 1,
+          state: 'Listo para entrega'
+        },
+        {
+          id: 125,
+          item: 'hambuegesa criolla 6',
           quantity: 1,
           state: 'Listo para entrega'
         }
       ],
-      orderToChange: null
+      orderToChange: null,
+      timeouts: [],
+      ordersTimeout: []
     }
   },
   methods: {
@@ -67,11 +87,8 @@ const app = Vue.createApp({
       }
     },
     changeOrderStatus (worker) {
-      console.log('worker', worker)
-
       this.orderToChange.state = 'En entrega'
       worker.state = 'Despachando'
-
       Object.assign(this.orders, this.orderToChange)
       Object.assign(this.workers, worker)
       localStorage.setItem('orders', JSON.stringify(this.orders))
@@ -80,27 +97,29 @@ const app = Vue.createApp({
       this.countDeliveryTime(worker)
     },
     countDeliveryTime (worker) {
-      console.log('Worker', worker)
-      setTimeout(() => {
+      this.ordersTimeout.push(this.orderToChange)
+      let timeout = setTimeout(() => {
+        console.log("en timeout")
         worker.state = 'Disponible'
         Object.assign(this.workers, worker)
-        this.orderToChange.state = 'Entregado'
-        Object.assign(this.orders, this.orderToChange)
+        this.ordersTimeout[0].state='Entregado'
+        Object.assign(this.orders, this.ordersTimeout[0])
         localStorage.setItem('orders', JSON.stringify(this.orders))
         localStorage.setItem('workers', JSON.stringify(this.workers))
-      }, 3000)
+        this.timeouts.splice(this.timeouts.indexOf(timeout), 1)
+        this.ordersTimeout.shift()
+      }, 5000)
+      this.timeouts.push(timeout)
     },
     dispatch (id) {
-      console.log('id', id)
       this.orderToChange = this.orders.find(order => {
         return order.id === id
-      })
-
-      console.log('orderToChange', this.orderToChange)
+      })     
     }
   },
   created () {
     this.syncLocalStorage()
+    console.log('TIMEOUTSinicio', this.timeouts)
   }
 })
 
