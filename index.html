@@ -16,8 +16,33 @@
 
   <body>
     <div id="app">
+      <h1>CHEF</h1>
       <div v-for="order in orders">
-        <div v-if="order.state!=='Entregado'">
+        <div v-if="order.state==='Pendiente' || order.state==='En preparación'">
+          {{ order }}
+          <button
+            v-if="order.state==='Pendiente'"
+            @click="cookOrder(order.id)"
+            type="button"
+            class="btn btn-primary"
+          >
+            Preparar
+          </button>
+          <button
+            v-else-if="order.state==='En preparación'"
+            @click="cookOrder(order.id)"
+            type="button"
+            class="btn btn-primary"
+          >
+            Finalizar
+          </button>
+        </div>
+      </div>
+      <h1>MESERO</h1>
+      <div v-for="order in orders">
+        <div
+          v-if="order.state==='Listo para entrega' || order.state==='En entrega'"
+        >
           {{ order }}
           <button
             @click="dispatch(order.id)"
@@ -76,7 +101,6 @@
               >
                 Close
               </button>
-             
             </div>
           </div>
         </div>

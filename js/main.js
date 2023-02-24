@@ -28,37 +28,37 @@ const app = Vue.createApp({
           id: 120,
           item: 'hambuegesa 1',
           quantity: 2,
-          state: 'Listo para entrega'
+          state: 'Pendiente'
         },
         {
           id: 121,
           item: 'perro 2',
           quantity: 1,
-          state: 'Listo para entrega'
+          state: 'Pendiente'
         },
         {
           id: 122,
           item: 'hambuegesa criolla 3',
           quantity: 1,
-          state: 'Listo para entrega'
+          state: 'Pendiente'
         },
         {
           id: 123,
           item: 'hambuegesa 4',
           quantity: 2,
-          state: 'Listo para entrega'
+          state: 'Pendiente'
         },
         {
           id: 124,
           item: 'perro 5',
           quantity: 1,
-          state: 'Listo para entrega'
+          state: 'Pendiente'
         },
         {
           id: 125,
           item: 'hambuegesa criolla 6',
           quantity: 1,
-          state: 'Listo para entrega'
+          state: 'Pendiente'
         }
       ],
       orderToChange: null,
@@ -99,10 +99,10 @@ const app = Vue.createApp({
     countDeliveryTime (worker) {
       this.ordersTimeout.push(this.orderToChange)
       let timeout = setTimeout(() => {
-        console.log("en timeout")
+        console.log('en timeout')
         worker.state = 'Disponible'
         Object.assign(this.workers, worker)
-        this.ordersTimeout[0].state='Entregado'
+        this.ordersTimeout[0].state = 'Entregado'
         Object.assign(this.orders, this.ordersTimeout[0])
         localStorage.setItem('orders', JSON.stringify(this.orders))
         localStorage.setItem('workers', JSON.stringify(this.workers))
@@ -114,7 +114,25 @@ const app = Vue.createApp({
     dispatch (id) {
       this.orderToChange = this.orders.find(order => {
         return order.id === id
-      })     
+      })
+    },
+    cookOrder (id) {
+      const orderToCook = this.orders.find(order => {
+        return order.id === id
+      })
+
+      if (orderToCook.state === 'Pendiente') {
+        orderToCook.state = 'En preparación'
+        Object.assign(this.orders, orderToCook)
+        localStorage.setItem('orders', JSON.stringify(this.orders))
+        console.log('order to cook', orderToCook)
+      } else if(orderToCook.state === 'En preparación'){
+        alert('Al parecer has finalizado la preparación de este pedido. Enviar a domicilios?')
+        orderToCook.state = 'Listo para entrega'
+        Object.assign(this.orders, orderToCook)
+        localStorage.setItem('orders', JSON.stringify(this.orders))
+        console.log('order to cook', orderToCook)
+      }
     }
   },
   created () {
