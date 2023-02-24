@@ -55,6 +55,7 @@
                 <div 
                 class="d-flex flex-column justify-content-center align-items-center bg-dark w-25 rounded p-4 h-50"
                     style="cursor: pointer;"
+                    @click="goToOrdersCompleted"
                 >
                     <img 
                         alt=""
@@ -177,35 +178,74 @@
                     </div>
                     <div class="modal-body">
                       <!--Table-->
-                      <table class="table table-dark table hover">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="text-center text-light">Imagen</th>
-                                <th scope="col" class="text-center text-light">Nombre</th>
-                                <th scope="col" class="text-center text-light">Cantidad</th>
-                                <th scope="col" class="text-center text-light">Precio</th>
-                                <th scope="col" class="text-center text-light">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="product in order.products" :key="order.id">
-                                <td class="text-center text-light">
-                                    <img 
-                                        :src="product.image" 
-                                        alt="Imagen del producto"
-                                        style="width: 50px; height: 50px;"
-                                        class="rounded-circle"
-                                    >
-                                </td>
-                                <td class="text-center text-light">{{product.name}}</td>
-                                <td class="text-center text-light">{{product.amount}}</td>
-                                <td class="text-center text-light">${{product.price}}</td>
-                                <td class="text-center text-light">${{product.total}}</td>
-                            </tr>
-                        </tbody>
+                        <table class="table table-dark table hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center text-light">Imagen</th>
+                                    <th scope="col" class="text-center text-light">Nombre</th>
+                                    <th scope="col" class="text-center text-light">Cantidad</th>
+                                    <th scope="col" class="text-center text-light">Precio</th>
+                                    <th scope="col" class="text-center text-light">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="product in order.products" :key="order.id">
+                                    <td class="text-center text-light">
+                                        <img 
+                                            :src="product.image" 
+                                            alt="Imagen del producto"
+                                            style="width: 50px; height: 50px;"
+                                            class="rounded-circle"
+                                        >
+                                    </td>
+                                    <td class="text-center text-light">{{product.name}}</td>
+                                    <td class="text-center text-light">{{product.amount}}</td>
+                                    <td class="text-center text-light">${{product.price}}</td>
+                                    <td class="text-center text-light">${{product.total}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    <!--Orders completed and canceled-->
+    <section 
+        class="d-flex flex-column justify-content-center align-items-center"
+        style="width: 100%; height: 100%;"
+        v-if="render.ordersCompleted"
+        v-cloak
+    >
+        <nav 
+            class="d-flex flex-row justify-content-start w-100 p-3"
+            style="position: absolute; top: 0; left: 0; z-index: 1;"
+        >
+            <button class="btn btn-danger" @click="goToAdminPanel">Volver</button>
+        </nav>
+        <div class="container w-100 h-100 d-flex flex-column justify-content-center align-items-center p-5">
+            <h1>Resultados de las ordenes</h1>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center text-light">Estado</th>
+                        <th scope="col" class="text-center text-light">Cantidad</th>
+                        <th scope="col" class="text-center text-light">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center text-light">Entregada</td>
+                        <td class="text-center text-light">{{orderResults.completed.orders}}</td>
+                        <td class="text-center text-light">${{orderResults.completed.total}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center text-light">Cancelada</td>
+                        <td class="text-center text-light">{{orderResults.canceled.orders}}</td>
+                        <td class="text-center text-light">${{orderResults.canceled.total}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
     <!--Swal-->

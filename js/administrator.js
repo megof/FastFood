@@ -13,6 +13,18 @@ const app = createApp({
             render: {
                 options: true,
                 ordersInfo: false,
+                ordersCompleted: false
+            },
+            // Order results
+            orderResults: {
+                completed: {
+                    orders: 0,
+                    total: 0,
+                },
+                canceled: {
+                    orders: 0,
+                    total: 0,
+                }
             },
             // Order info
             order: {},
@@ -43,6 +55,7 @@ const app = createApp({
             // Set render
             this.render.options = true;
             this.render.ordersInfo = false;
+            this.render.ordersCompleted = false;
         },
         // go to orders info
         goToOrdersInfo() {
@@ -50,23 +63,48 @@ const app = createApp({
             this.render.options = false;
             this.render.ordersInfo = true;
         },
+        // go orders completed
+        goToOrdersCompleted() {
+            // Set order results
+            this.setOrderResults();
+            // Set render
+            this.render.options = false;
+            this.render.ordersCompleted = true;
+        },
+        // setOrderResults
+        setOrderResults() {
+            this.orders.map(order => {
+                this.setProductDetailsAtOrder(order);
+                if (order.status === "Entregada") {
+                    this.orderResults.completed.orders++;
+                    this.orderResults.completed.total += order.products.reduce((total, product) => total + product.total, 0);
+                }
+                else if (order.status === "Cancelada") {
+                    this.orderResults.canceled.orders++;
+                    this.orderResults.canceled.total += order.products.reduce((total, product) => total + product.total, 0);
+                }
+            });
+        },
         // Set order details
         setOrderDetails(order) {
             // Set order info
             this.order = order;
             // Set order product details
-            for (let i = 0; i < this.order.products.length; i++) {
+            this.setProductDetailsAtOrder(this.order);
+        },
+        // Set product details at order
+        setProductDetailsAtOrder(order) {
+            for (let i = 0; i < order.products.length; i++) {
                 // Get product
-                const productInfo = this.food.find(food => food.id == this.order.products[i].id);
+                const productInfo = this.food.find(food => food.id == order.products[i].id);
                 // Set product info
-                this.order.products[i] = {
-                    total: this.order.products[i].amount * productInfo.price,
-                    ...this.order.products[i],
+                order.products[i] = {
+                    total: order.products[i].amount * productInfo.price,
+                    ...order.products[i],
                     ...productInfo,
                 };
             }
-            // log order
-            console.log(this.order);
+            console.log(order);
         },
         // Get orders from local storage
         getOrdersFromLocalStorage() {
