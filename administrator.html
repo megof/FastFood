@@ -239,15 +239,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!--Orders completed-->
                     <tr>
                         <td class="text-center text-light">Entregada</td>
                         <td class="text-center text-light">{{orderResults.completed.orders}}</td>
                         <td class="text-center text-light">${{orderResults.completed.total}}</td>
                     </tr>
+                    <!--Orders canceled-->
                     <tr>
                         <td class="text-center text-light">Cancelada</td>
                         <td class="text-center text-light">{{orderResults.canceled.orders}}</td>
                         <td class="text-center text-light">${{orderResults.canceled.total}}</td>
+                    </tr>
+                    <!--Orders pending-->
+                    <tr>
+                        <td class="text-center text-light">Pendiente</td>
+                        <td class="text-center text-light">{{orderResults.pending.orders}}</td>
+                        <td class="text-center text-light">${{orderResults.pending.total}}</td>
                     </tr>
                 </tbody>
             </table>

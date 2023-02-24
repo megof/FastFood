@@ -24,6 +24,10 @@ const app = createApp({
                 canceled: {
                     orders: 0,
                     total: 0,
+                },
+                pending: {
+                    orders: 0,
+                    total: 0,
                 }
             },
             // Order info
@@ -83,6 +87,9 @@ const app = createApp({
                 else if (order.status === "Cancelada") {
                     this.orderResults.canceled.orders++;
                     this.orderResults.canceled.total += order.products.reduce((total, product) => total + product.total, 0);
+                } else if (order.status === "Pendiente") {
+                    this.orderResults.pending.orders++;
+                    this.orderResults.pending.total += order.products.reduce((total, product) => total + product.total, 0);
                 }
             });
         },
