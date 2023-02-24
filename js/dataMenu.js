@@ -3,6 +3,7 @@ const dataMenu = [
     {
         id:1111111111,
         name:'Hambuegesa Mexicana',
+        title:'Hamburguesa Mexicana',
         category:'burger',
         image:'../img/hamburguesa-mexicana.jpg',
         shortDescription:'Hamburguesa auténtica mexicana con los ingredientes frescos y de mejor calidad',
@@ -12,6 +13,7 @@ const dataMenu = [
     {
         id:2222222222,
         name:'Hambuegesa Tradicional',
+        title:'HamburguesaTradicional',
         category:'burger',
         image:'../img/hamburguesa-tradicional.jpg', 
         shortDescription:'Hamburguesa tradicional con la reseta de la casa, verduras y queso frescos y de la más alta calidad',
@@ -22,6 +24,7 @@ const dataMenu = [
     {
         id:3333333333,
         name:'Hambuegesa Doble Carne',
+        title:'Hamburguesa Doble Carne',
         category:'burger',
         image:'../img/hamburguesa-doble-carne.jpg', 
         shortDescription:'Hamburguesa doble carne con la reseta de la casa, verduras y queso frescos y de la más alta calidad',
@@ -31,6 +34,7 @@ const dataMenu = [
     {
         id:4444444444,
         name:'Hambuegesa Ranchera',
+        title:'Hamburguesa Ranchera',
         category:'burger',
         image:'../img/hamburguesa-ranchera.jpg', 
         shortDescription:'Hamburguesa ranchera con reseta de la casa, verduras y queso frescos y de la más alta calidad',
