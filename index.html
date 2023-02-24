@@ -18,10 +18,10 @@
     <div id="app">
       <h1>CHEF</h1>
       <div v-for="order in orders">
-        <div v-if="order.state==='Pendiente' || order.state==='En preparación'">
+        <div v-if="order.status ==='Pendiente' || order.status ==='En preparación'">
           {{ order }}
           <button
-            v-if="order.state==='Pendiente'"
+            v-if="order.status ==='Pendiente'"
             @click="cookOrder(order.id)"
             type="button"
             class="btn btn-primary"
@@ -29,7 +29,7 @@
             Preparar
           </button>
           <button
-            v-else-if="order.state==='En preparación'"
+            v-else-if="order.status==='En preparación'"
             @click="cookOrder(order.id)"
             type="button"
             class="btn btn-primary"
@@ -41,7 +41,7 @@
       <h1>MESERO</h1>
       <div v-for="order in orders">
         <div
-          v-if="order.state==='Listo para entrega' || order.state==='En entrega'"
+          v-if="order.status ==='Listo para entrega' || order.status ==='En entrega'"
         >
           {{ order }}
           <button
@@ -82,7 +82,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ worker.name }}</h5>
                   <p class="card-text">
-                    {{ worker.state }}
+                    {{ worker.status }}
                   </p>
                   <a
                     @click="changeOrderStatus(worker)"
@@ -113,6 +113,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--Data workers-->
+    <script src="./js/dataWorkers.js"></script>
+    <!--Data orders-->
+    <script src="./js/dataOrders.js"></script>
+    <!--Main-->
     <script src="./js/main.js"></script>
   </body>
 </html>

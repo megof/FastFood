@@ -7,7 +7,7 @@ const dataOrders = [
                 amount: 1,
             }
         ],
-        status: "Entregada",
+        status: "Pendiente",
     },
     {
         id: "2",
@@ -17,7 +17,7 @@ const dataOrders = [
                 amount: 2,
             }
         ],
-        status: "En proceso",
+        status: "Pendiente",
     },
     {
         id: "3",
@@ -27,7 +27,7 @@ const dataOrders = [
                 amount: 3,
             }
         ],
-        status: "Cancelada",
+        status: "Pendiente",
     },
     {
         id: "4",
@@ -41,6 +41,6 @@ const dataOrders = [
                 amount: 2,
             },
         ],
-        status: "Entregada",
+        status: "Pendiente",
     }
 ]
