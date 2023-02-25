@@ -181,17 +181,25 @@ body {
   background-color: var(--color5) !important;
 }
 
-.btn-buy {
+.btn-buy,
+.btn-cancel {
   border: none !important;
   background-color: var(--color-4) !important;
   border: 2px solid transparent !important;
   transition: 0.3s ease-in-out;
 }
-
 .btn-buy:hover {
   color: var(--color-4);
   background-color: transparent !important;
   border: 2px solid var(--color-4) !important;
+}
+.btn-cancel {
+  background-color: var(--color5) !important;
+}
+.btn-cancel:hover {
+  color: var(--color5);
+  background-color: transparent !important;
+  border: 2px solid var(--color5) !important;
 }
 
 input[type="text"],
