@@ -11,11 +11,70 @@ createApp({
       ordersPlaced: [], //EStas son las ordenes que posteriormente se muestran en el carrito de compras
       ordersToPay: [],
       currentTotal: null,
-      orders: []
-    }
+      orders: [],
+
+      // Login - Jasser
+      users: [
+        { name: "camila", password: 1234 },
+        { name: "camilo", password: 5678 },
+        { name: "jasser", password: 9012 },
+      ],
+
+      is: {
+        logout: true,
+        login: false,
+      },
+
+      user: {
+        name: "",
+        password: "",
+      },
+      // FIN Login - Jasser
+    };
   },
   methods: {
-    increaseUnits (e) {
+    // Login -Jasser
+    isLogin() {
+      if (
+        this.users.some(
+          (user) => user.name.toLowerCase() === this.user.name.toLowerCase() && user.password === parseInt(this.user.password)
+        )
+      ) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Usuario Validado Correctamente",
+        });
+
+        this.is = {
+          logout: false,
+          login: true,
+        };
+
+        sessionStorage.setItem("user", JSON.stringify(this.user));
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Usuario o contraseña incorrectos",
+        });
+        return false;
+      }
+    },
+    // FIN Login -Jasser
+
+    increaseUnits(e) {
       //Este es el id que traigo de mi botón.
       let id = Number(e.target.dataset.id)
       //Este es el arreglo que debo modificar y su índice
@@ -164,11 +223,28 @@ createApp({
     )
     console.log('Currenttotal', this.currentTotal)
   },
-  created () {},
+  created() {
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    if (user !== null) {
+      this.user = user;
+      if (this.user) {
+        this.is = {
+          logout: false,
+          login: true,
+        };
+      } else {
+        this.is = {
+          logout: true,
+          login: false,
+        };
+      }
+    }
+  },
 
   computed: {
-    onAnimation () {
-      return this.ordersPlaced.length > 0 ? 'shopping-active' : 'shopping'
-    }
-  }
-}).mount('#root')
+    //Esta propieda computada devuelve una clase que ya habia definido css y se activa unicamente cuando el carrito de compras cambia.
+    onAnimation() {
+      return this.ordersPlaced.length > 0 ? "shopping-active" : "shopping";
+    },
+  },
+}).mount("#root");
