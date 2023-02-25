@@ -143,11 +143,6 @@ const app = createApp({
             if (orders) {
                 // Set orders
                 this.orders = orders;
-            } else {
-                // Set orders
-                this.orders = dataOrders;
-                // Save orders at local storage
-                this.saveOrdersAtLocalStorage();
             }
         },
         // Get products from local storage
