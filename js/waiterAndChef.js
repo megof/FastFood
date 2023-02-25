@@ -4,7 +4,7 @@ const app = Vue.createApp({
       // Order info
       order: {},
       workers: dataWorkers,
-      orders: dataOrders,
+      orders: [],
       orderToChange: null,
       timeouts: [],
       ordersTimeout: []
@@ -12,56 +12,57 @@ const app = Vue.createApp({
   },
   methods: {
     // Set order details
-    setOrderDetails(order) {
+    setOrderDetails (order) {
       // Set order product details
-      this.setProductDetailsAtOrder(order);
+      this.setProductDetailsAtOrder(order)
     },
     // Set product details at order
-    setProductDetailsAtOrder(order) {
-        for (let i = 0; i < order.products.length; i++) {
-            // Get product
-            const productInfo = this.food.find(food => food.id == order.products[i].id);
-            // Set product info
-            order.products[i] = {
-                total: order.products[i].amount * productInfo.price,
-                ...order.products[i],
-                ...productInfo,
-            };
-            // Log product info
-            console.log(order.products[i]);
+    setProductDetailsAtOrder (order) {
+      for (let i = 0; i < order.products.length; i++) {
+        // Get product
+        const productInfo = this.food.find(
+          food => food.id == order.products[i].id
+        )
+        // Set product info
+        order.products[i] = {
+          total: order.products[i].amount * productInfo.price,
+          ...order.products[i],
+          ...productInfo
         }
-
+        // Log product info
+        console.log(order.products[i])
+      }
     },
     // Get products from local storage
-    getFoodFromLocalStorage() {
+    getFoodFromLocalStorage () {
       // Get food
-      const food = JSON.parse(localStorage.getItem("food"));
+      const food = JSON.parse(localStorage.getItem('food'))
       // Check if food exist
       if (food) {
-          // Set food
-          this.food = food;
+        // Set food
+        this.food = food
+      } else {
+        // Set food
+        this.food = dataMenu
+        // Save food at local storage
+        this.saveFoodAtLocalStorage()
       }
-      else {
-          // Set food
-          this.food = dataMenu;
-          // Save food at local storage
-          this.saveFoodAtLocalStorage();
-      }
-  },
-  // Save food at local storage
-  saveFoodAtLocalStorage() {
+    },
+    // Save food at local storage
+    saveFoodAtLocalStorage () {
       // Save food
-      localStorage.setItem("food", JSON.stringify(this.food));
-  },
+      localStorage.setItem('food', JSON.stringify(this.food))
+    },
     syncLocalStorage () {
+      console.log(localStorage.getItem('orders').length)
+
       if (
         localStorage.getItem('workers') === null ||
-        localStorage.getItem('workers') === undefined ||
-        localStorage.getItem('orders') === null ||
-        localStorage.getItem('orders') === undefined
+        localStorage.getItem('workers') === undefined
       ) {
+        console.log(' es null')
         localStorage.setItem('workers', JSON.stringify(this.workers))
-        localStorage.setItem('orders', JSON.stringify(this.orders))
+        //localStorage.setItem('orders', JSON.stringify(this.orders))
       } else {
         localStorage.setItem('workers', localStorage.getItem('workers'))
         const toUpdateworkers = JSON.parse(localStorage.getItem('workers'))
@@ -71,9 +72,21 @@ const app = Vue.createApp({
         const toUpdateOrders = JSON.parse(localStorage.getItem('orders'))
         this.orders = toUpdateOrders
       }
+
+      if (
+        localStorage.getItem('orders') === null ||
+        localStorage.getItem('orders') === undefined
+      ) {
+        localStorage.setItem('orders', JSON.stringify(this.orders))
+        //localStorage.setItem('orders', JSON.stringify(this.orders))
+      } else {
+        localStorage.setItem('orders', localStorage.getItem('orders'))
+        const toUpdateOrders = JSON.parse(localStorage.getItem('orders'))
+        this.orders = toUpdateOrders
+      }
     },
     changeOrderStatus (worker) {
-      this.orderToChange.status = 'En entrega'
+      this.orderToChange.state = 'En entrega'
       worker.status = 'Despachando'
       Object.assign(this.orders, this.orderToChange)
       Object.assign(this.workers, worker)
@@ -88,7 +101,7 @@ const app = Vue.createApp({
         console.log('en timeout')
         worker.status = 'Disponible'
         Object.assign(this.workers, worker)
-        this.ordersTimeout[0].status = 'Entregada'
+        this.ordersTimeout[0].state = 'Entregada'
         Object.assign(this.orders, this.ordersTimeout[0])
         localStorage.setItem('orders', JSON.stringify(this.orders))
         localStorage.setItem('workers', JSON.stringify(this.workers))
@@ -107,27 +120,32 @@ const app = Vue.createApp({
         return order.id === id
       })
 
-      if (orderToCook.status === 'Pendiente') {
-        orderToCook.status = 'En preparación'
+      if (orderToCook.state === 'Pagado') {
+        orderToCook.state = 'En preparación'
         Object.assign(this.orders, orderToCook)
         localStorage.setItem('orders', JSON.stringify(this.orders))
         console.log('order to cook', orderToCook)
-      } else if(orderToCook.status === 'En preparación'){
-        alert('Al parecer has finalizado la preparación de este pedido. Enviar a domicilios?')
-        orderToCook.status = 'Listo para entrega'
+      } else if (orderToCook.state === 'En preparación') {
+        alert(
+          'Al parecer has finalizado la preparación de este pedido. Enviar a domicilios?'
+        )
+        orderToCook.state = 'Listo para entrega'
         Object.assign(this.orders, orderToCook)
         localStorage.setItem('orders', JSON.stringify(this.orders))
         console.log('order to cook', orderToCook)
       }
+    },
+    logout () {
+      window.open('../index.html', '_self')
     }
   },
   created () {
     this.syncLocalStorage()
-    console.log('TIMEOUTSinicio', this.timeouts)
+    console.log('OORDERS', this.orders)
   },
   mounted () {
     // Get products from local storage
-    this.getFoodFromLocalStorage();
+    this.getFoodFromLocalStorage()
   }
 })
 

@@ -83,14 +83,14 @@ const app = createApp({
             // Set order results
             this.orders.map(order => {
                 this.setProductDetailsAtOrder(order);
-                if (order.status === "Entregada") {
+                if (order.state === "Entregada") {
                     this.orderResults.completed.orders++;
                     this.orderResults.completed.total += order.products.reduce((total, product) => total + product.total, 0);
                 }
-                else if (order.status === "Cancelada") {
+                else if (order.state === "Cancelada") {
                     this.orderResults.canceled.orders++;
                     this.orderResults.canceled.total += order.products.reduce((total, product) => total + product.total, 0);
-                } else if (order.status === "Pendiente") {
+                } else if (order.state === "Pagado") {
                     this.orderResults.pending.orders++;
                     this.orderResults.pending.total += order.products.reduce((total, product) => total + product.total, 0);
                 }

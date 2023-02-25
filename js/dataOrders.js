@@ -7,7 +7,7 @@ const dataOrders = [
                 amount: 1,
             }
         ],
-        status: "Pendiente",
+        state: "Pendiente",
     },
     {
         id: "2",
@@ -17,7 +17,7 @@ const dataOrders = [
                 amount: 2,
             }
         ],
-        status: "Pendiente",
+        state: "Pendiente",
     },
     {
         id: "3",
@@ -27,7 +27,7 @@ const dataOrders = [
                 amount: 3,
             }
         ],
-        status: "Pendiente",
+        state: "Pendiente",
     },
     {
         id: "4",
@@ -41,6 +41,6 @@ const dataOrders = [
                 amount: 2,
             },
         ],
-        status: "Pendiente",
+        state: "Pendiente",
     }
 ]

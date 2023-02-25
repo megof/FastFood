@@ -1,9 +1,9 @@
-const { createApp } = Vue;
-import dataMenu from "./dataMenu.js";
-import navBar from "./nav.js";
+const { createApp } = Vue
+import dataMenu from './dataMenu.js'
+import navBar from './nav.js'
 
 createApp({
-  data() {
+  data () {
     return {
       dataMenu: [], //Productos que ofrece la tienda
       numberOfUnits: 1, //Cantidad de unidades del producto a pedir.
@@ -12,52 +12,56 @@ createApp({
       ordersPlaced: [], //EStas son las ordenes que posteriormente se muestran en el carrito de compras
       ordersToPay: [],
       currentTotal: null,
-      orders: [],
-    };
+      orders: []
+    }
   },
   methods: {
-    increaseUnits(e) {
+    increaseUnits (e) {
       //Este es el id que traigo de mi botón.
-      let id = Number(e.target.dataset.id);
+      let id = Number(e.target.dataset.id)
       //Este es el arreglo que debo modificar y su índice
-      let food = this.dataMenu.find((el) => el.id === id);
-      let index = this.dataMenu.map((el) => el.id).indexOf(id);
+      let food = this.dataMenu.find(el => el.id === id)
+      let index = this.dataMenu.map(el => el.id).indexOf(id)
 
-      food.units += 1;
-      this.dataMenu[index] = food;
+      food.units += 1
+      this.dataMenu[index] = food
       //Actualizo para el que se muestre en el modal el número que colocó el usuario.
-      this.numberOfUnits = food.units;
+      this.numberOfUnits = food.units
     },
-    decreaseUnits(e) {
+    decreaseUnits (e) {
       //Este es el id que traigo de mi botón.
-      let id = Number(e.target.dataset.id);
+      let id = Number(e.target.dataset.id)
       //Este es el arreglo que debo modificar y su índice
-      let food = this.dataMenu.find((el) => el.id === id);
-      let index = this.dataMenu.map((el) => el.id).indexOf(id);
-      if (food.units === 1) return;
-      food.units -= 1;
-      this.dataMenu[index] = food;
+      let food = this.dataMenu.find(el => el.id === id)
+      let index = this.dataMenu.map(el => el.id).indexOf(id)
+      if (food.units === 1) return
+      food.units -= 1
+      this.dataMenu[index] = food
       //Para el modal
-      this.numberOfUnits = food.units;
+      this.numberOfUnits = food.units
     },
-    decreaseUnitsModal() {
-      if (this.numberOfUnits === 1) return;
-      this.numberOfUnits -= 1;
+    decreaseUnitsModal () {
+      if (this.numberOfUnits === 1) return
+      this.numberOfUnits -= 1
     },
-    increaseUnitsModal() {
-      this.numberOfUnits += 1;
+    increaseUnitsModal () {
+      this.numberOfUnits += 1
     },
-    deployModal(e) {
+    deployModal (e) {
       //Actualizo la info que se muestra en el modal de confirmar el pedido
-      this.numberOfUnits = this.dataMenu.find((el) => el.id === Number(e.target.id)).units;
-      this.modalInformation = this.dataMenu.find((el) => el.id === Number(e.target.id));
+      this.numberOfUnits = this.dataMenu.find(
+        el => el.id === Number(e.target.id)
+      ).units
+      this.modalInformation = this.dataMenu.find(
+        el => el.id === Number(e.target.id)
+      )
     },
-    closeModal() {
-      const myModalEl = document.getElementById("exampleModal");
-      const modal = bootstrap.Modal.getInstance(myModalEl);
-      modal.hide();
+    closeModal () {
+      const myModalEl = document.getElementById('exampleModal')
+      const modal = bootstrap.Modal.getInstance(myModalEl)
+      modal.hide()
     },
-    confirmOrder() {
+    confirmOrder () {
       this.currentOrder = {
         id: Math.round(Math.random() * 500),
         idProduct: this.modalInformation.id,
@@ -65,70 +69,92 @@ createApp({
         amount: this.numberOfUnits,
         name: this.modalInformation.name,
         price: this.modalInformation.price,
-        priceTotal: this.modalInformation.price * this.numberOfUnits,
-      };
-      this.ordersPlaced.push(this.currentOrder);
-      this.currentTotal = this.ordersPlaced.reduce((acc, cur) => acc + cur.priceTotal, 0);
-      localStorage.setItem("ordersPlaced", JSON.stringify(this.ordersPlaced));
-      this.closeModal();
+        priceTotal: this.modalInformation.price * this.numberOfUnits
+      }
+      this.ordersPlaced.push(this.currentOrder)
+      this.currentTotal = this.ordersPlaced.reduce(
+        (acc, cur) => acc + cur.priceTotal,
+        0
+      )
+      localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
+      this.closeModal()
       Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Su pedido ha sido realizado, por favor diríjase al carrito de compras para confirmar la compra.",
-        showConfirmButton: true,
-      });
+        position: 'center',
+        icon: 'success',
+        title:
+          'Su pedido ha sido realizado, por favor diríjase al carrito de compras para confirmar la compra.',
+        showConfirmButton: true
+      })
     },
 
-    createNewOrderToPay() {
-      const totalToPay = this.ordersPlaced.reduce((acc, cur) => acc + cur.priceTotal, 0);
-      console.log("total", totalToPay);
+    createNewOrderToPay () {
+      const totalToPay = this.ordersPlaced.reduce(
+        (acc, cur) => acc + cur.priceTotal,
+        0
+      )
+      console.log('total', totalToPay)
 
       this.ordersToPay.push({
         id: Math.round(Math.random() * 500),
         items: this.ordersPlaced,
-        state: "Pendiente de pago",
-        total: totalToPay,
-      });
+        state: 'Pagado',
+        total: totalToPay
+      })
 
-      localStorage.setItem("orders", JSON.stringify(this.ordersToPay));
-      this.ordersPlaced.length = 0;
-      localStorage.setItem("ordersPlaced", JSON.stringify(this.ordersPlaced));
-      alert("aca se abre la pasarela de pagos");
+      localStorage.setItem('orders', JSON.stringify(this.ordersToPay))
+      this.ordersPlaced.length = 0
+      localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
+      alert('aca se abre la pasarela de pagos')
 
       //Luego cuando ya esta pago, hay que ambiar el estado de la orden
     },
-    deleteOrderItem(id) {
-      this.ordersPlaced = this.ordersPlaced.filter((order) => {
-        return order.id !== id;
-      });
-      this.currentTotal = this.ordersPlaced.reduce((acc, cur) => acc + cur.priceTotal, 0);
-      localStorage.setItem("ordersPlaced", JSON.stringify(this.ordersPlaced));
+    deleteOrderItem (id) {
+      this.ordersPlaced = this.ordersPlaced.filter(order => {
+        return order.id !== id
+      })
+      this.currentTotal = this.ordersPlaced.reduce(
+        (acc, cur) => acc + cur.priceTotal,
+        0
+      )
+      localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
     },
+    goToAdmin () {
+      window.open('../administrator.html', '_self')
+    },
+    goToChef () {
+      window.open('../chef.html', '_self')
+    },
+    goToWaiter () {
+      window.open('../waiter.html', '_self')
+    }
   },
-  beforeMount() {
+  beforeMount () {
     //Localstorage de los productos que tenemos para ofrecer.
-    if (localStorage.getItem("food")) {
-      this.dataMenu = JSON.parse(localStorage.getItem("food"));
+    if (localStorage.getItem('food')) {
+      this.dataMenu = JSON.parse(localStorage.getItem('food'))
     } else {
-      this.dataMenu = dataMenu;
-      localStorage.setItem("food", JSON.stringify(this.dataMenu));
+      this.dataMenu = dataMenu
+      localStorage.setItem('food', JSON.stringify(this.dataMenu))
     }
 
     //Localstorage de las ordenes que van para el carrito.
-    if (localStorage.getItem("ordersPlaced")) {
-      this.ordersPlaced = JSON.parse(localStorage.getItem("ordersPlaced"));
+    if (localStorage.getItem('ordersPlaced')) {
+      this.ordersPlaced = JSON.parse(localStorage.getItem('ordersPlaced'))
     }
   },
-  mounted() {
-    navBar();
-    this.currentTotal = this.ordersPlaced.reduce((acc, cur) => acc + cur.priceTotal, 0);
-    console.log("Currenttotal", this.currentTotal);
+  mounted () {
+    navBar()
+    this.currentTotal = this.ordersPlaced.reduce(
+      (acc, cur) => acc + cur.priceTotal,
+      0
+    )
+    console.log('Currenttotal', this.currentTotal)
   },
-  created() {},
+  created () {},
 
   computed: {
-    onAnimation() {
-      return this.ordersPlaced.length > 0 ? "shopping-active" : "shopping";
-    },
-  },
-}).mount("#root");
+    onAnimation () {
+      return this.ordersPlaced.length > 0 ? 'shopping-active' : 'shopping'
+    }
+  }
+}).mount('#root')
