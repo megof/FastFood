@@ -13,6 +13,11 @@ createApp({
       ordersToPay: [],
       currentTotal: null,
       orders: [],
+
+      is: {
+        logout: true,
+        login: false,
+      },
     };
   },
   methods: {
@@ -127,6 +132,7 @@ createApp({
   created() {},
 
   computed: {
+    //Esta propieda computada devuelve una clase que ya habia definido css y se activa unicamente cuando el carrito de compras cambia.
     onAnimation() {
       return this.ordersPlaced.length > 0 ? "shopping-active" : "shopping";
     },
