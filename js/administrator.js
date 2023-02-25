@@ -85,14 +85,14 @@ const app = createApp({
                 this.setProductDetailsAtOrder(order);
                 if (order.state === "Entregada") {
                     this.orderResults.completed.orders++;
-                    this.orderResults.completed.total += order.products.reduce((total, product) => total + product.total, 0);
+                    this.orderResults.completed.total += order.items.reduce((total, item) => total + item.total, 0);
                 }
                 else if (order.state === "Cancelada") {
                     this.orderResults.canceled.orders++;
-                    this.orderResults.canceled.total += order.products.reduce((total, product) => total + product.total, 0);
+                    this.orderResults.canceled.total += order.items.reduce((total, item) => total + item.total, 0);
                 } else if (order.state === "Pagado") {
                     this.orderResults.pending.orders++;
-                    this.orderResults.pending.total += order.products.reduce((total, product) => total + product.total, 0);
+                    this.orderResults.pending.total += order.items.reduce((total, item) => total + item.total, 0);
                 }
             });
         },
@@ -124,13 +124,13 @@ const app = createApp({
         },
         // Set product details at order
         setProductDetailsAtOrder(order) {
-            for (let i = 0; i < order.products.length; i++) {
+            for (let i = 0; i < order.items.length; i++) {
                 // Get product
-                const productInfo = this.food.find(food => food.id == order.products[i].id);
+                const productInfo = this.food.find(food => food.id == order.items[i].idProduct);
                 // Set product info
-                order.products[i] = {
-                    total: order.products[i].amount * productInfo.price,
-                    ...order.products[i],
+                order.items[i] = {
+                    total: order.items[i].amount * productInfo.price,
+                    ...order.items[i],
                     ...productInfo,
                 };
             }

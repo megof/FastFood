@@ -1,5 +1,4 @@
 const { createApp } = Vue
-import dataMenu from './dataMenu.js'
 import navBar from './nav.js'
 
 createApp({
