@@ -1,3 +1,219 @@
 [v-cloak]{
     display: none;
 }
+:root {
+  --color-1: #ec1c24;
+  --color-2: #fdbd10;
+  --color-3: #0066b2;
+  --color-4: #ed7902;
+  --color5: #a90b30;
+  --white: #fff;
+  --black: #000;
+}
+/* @font-face {
+  font-family: "Insanibc";
+  src: url(/assets/font/insaniburger/Insanibc.ttf);
+} */
+
+body {
+  font-family: "Bungee", cursive;
+  background-color: #f2f3f8;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.nav-bar-home {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  transition: 0.5s ease-in-out;
+}
+
+.navbar-scroll {
+  background-color: #a90b30;
+}
+
+.nav-bar-links a {
+  font-family: "Open Sans", sans-serif;
+  color: #fff0ff !important;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem !important;
+  border-bottom: 0.25rem solid transparent;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-bar-links a:hover {
+  transform: scale(1.1);
+  color: var(--color-2) !important;
+  border-bottom: 0.25rem solid var(--color-2);
+}
+
+.logo-container {
+  width: 100%;
+  letter-spacing: 2px;
+}
+.logo {
+  width: 100%;
+  max-width: 10%;
+}
+
+.home-content,
+.home-content-2,
+.home-content-3 {
+  background-repeat: no-repeat;
+  background-position: center, center !important;
+  background-size: cover !important;
+  width: 100% !important;
+  height: 100vh !important;
+  color: #fff;
+  min-height: 500px;
+  display: flex;
+}
+
+.home-content {
+  background-image: url(/assets/Burger.jpg);
+}
+.home-content-2 {
+  background-image: url(/assets/HOT-DOG.jpg);
+}
+.home-content-3 {
+  background-image: url(/assets/Fries\ .jpg);
+}
+
+.text-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.text-1 .text-info,
+.text-1 span {
+  color: var(--color-3) !important;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0.5rem !important;
+}
+
+.text-1 .text-b {
+  font-family: "Bungee", cursive;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.fa-star::before {
+  color: var(--color-2) !important;
+  text-shadow: 2px 2px 0 var(--black);
+}
+
+.shopping {
+  border: 2px solid transparent;
+  background-color: var(--black);
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+}
+
+.font-canvas {
+  font-family: "Bungee", cursive;
+}
+
+.hamburgers {
+  margin: 0 auto;
+  color: var(--color-1);
+  text-shadow: 2px 2px 0 var(--black);
+  padding: 0.5rem;
+  border-bottom: 2px solid var(--color-4);
+  border-top: 2px solid var(--color-4);
+}
+
+.text-400 {
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 400;
+}
+
+.text-menu {
+  color: var(--color-3);
+}
+
+.btn-first {
+  border: none !important;
+  background-color: var(--color-4) !important;
+}
+.card {
+  width: 18rem;
+  opacity: 0.9;
+  flex-grow: 1;
+  transition: 0.5s ease-in-out;
+}
+.card:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  filter: contrast(120%);
+}
+
+.btn-scroll {
+  font-family: "Bungee", cursive;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: fixed !important;
+  bottom: 2%;
+  right: 2%;
+  margin: 1rem !important;
+  z-index: 2;
+  overflow: hidden;
+  text-align: center;
+  border: none;
+  background-color: var(--color5) !important;
+}
+
+.item-in-cart {
+  font-family: "Open Sans", sans-serif !important;
+  color: var(--color-2);
+  font-weight: 700;
+  background-color: var(--color5) !important;
+}
+
+.btn-pagar {
+  border: none !important;
+  background-color: var(--color-4) !important;
+  border: 2px solid transparent !important;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-pagar:hover {
+  color: var(--color-4);
+  background-color: transparent !important;
+  border: 2px solid var(--color-4) !important;
+}
+
+/* esta clase se le agrega al carrito es decir al elemento "a "que contiene la clase "shopping" cuando tenga items, esto con la finalizada de que la animacion refleje un cambio de state en la cantidad de articulos que tiene el carrito*/
+.shopping-active {
+  animation: pulse-black 1.25s ease infinite;
+}
+
+@keyframes pulse-black {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 20% !important;
+  }
+}

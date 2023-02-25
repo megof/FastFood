@@ -1,80 +1,90 @@
 //Data de las comidas que tenemos.
+//Data de las comidas que tenemos.
 const dataMenu = [
     {
         id:1111111111,
-        name:'Hambuegesa Mexicana',
+        name:'Hamburgesa Mexicana',
         title:'Hamburguesa Mexicana',
         category:'burger',
-        image:'../img/hamburguesa-mexicana.jpg',
+        image:'./assets/1.jpg',
         shortDescription:'Hamburguesa auténtica mexicana con los ingredientes frescos y de mejor calidad',
         longDescription:'Hamburguesa con 150 gramos de res, lechuga, tomate, queso y jalapeños. Como salsa principal el guacamole con reseta propia de la casa. Como acompañante papas a la francesa y un refresco de Cola, todo en uno',
-        price:25000
+        price:25000,
+        units:1,
     },
     {
         id:2222222222,
-        name:'Hambuegesa Tradicional',
+        name:'Hamburgesa Tradicional',
         title:'HamburguesaTradicional',
         category:'burger',
-        image:'../img/hamburguesa-tradicional.jpg', 
+        image:'../assets/2.jpg', 
         shortDescription:'Hamburguesa tradicional con la reseta de la casa, verduras y queso frescos y de la más alta calidad',
         longDescription:'Hamburguesa con 150 gramos de res y cerdo, lechuga, tomate, queso y salsas al gusto. Como acompañante papas a la francesa y un refresco de Cola, todo en uno',
-        price:20000
+        price:20000,
+        units:1,
     }
     ,
     {
         id:3333333333,
-        name:'Hambuegesa Doble Carne',
+        name:'Hamburgesa Doble Carne',
         title:'Hamburguesa Doble Carne',
         category:'burger',
-        image:'../img/hamburguesa-doble-carne.jpg', 
+        image:'../assets/3.jpg', 
         shortDescription:'Hamburguesa doble carne con la reseta de la casa, verduras y queso frescos y de la más alta calidad',
         longDescription:'Hamburguesa con 300 gramos de res y cerdo, lechuga, tomate, queso y salsas al gusto. Como acompañante papas a la francesa y un refresco de Cola, todo en uno',
-        price:35000
+        price:35000,
+        units:1,
     },
     {
         id:4444444444,
-        name:'Hambuegesa Ranchera',
+        name:'Hamburgesa Ranchera',
         title:'Hamburguesa Ranchera',
         category:'burger',
-        image:'../img/hamburguesa-ranchera.jpg', 
+        image:'../assets/4.jpg', 
         shortDescription:'Hamburguesa ranchera con reseta de la casa, verduras y queso frescos y de la más alta calidad',
         longDescription:'Hamburguesa con 200 gramos de res, lechuga, tomate, maicitos y queso. Como salsas principales guacamole y salsa de maiz dulce. Como acompañante papas a la francesa y un refresco de Cola, todo en uno',
-        price:30000
+        price:30000,
+        units:1,
     },
     {
         id:5555555555,
         name:'Perro Mexicano',
         category:'hotDog',
-        image:'../img/perro-mexicano.jpg', 
+        image:'../assets/dog-1.jpg', 
         shortDescription:'Perro caliente mexicano, con papas a la francesa y refresco del sabor que prefieras',
         longDescription:'Perro con guacamole, cebolla, jalapeños, champiñones y una lámina de tocino que recubre la salchicha.',
-        price:20000
+        price:20000,
+        units:1,
     },
     {
         id:6666666666,
         name:'Perro de Arizona',
         category:'hotDog',
-        image:'../img/perro-arizona.jpg', 
+        image:'../assets/dog-2.jpg', 
         shortDescription:'Perro caliente con receta de arizona EEUU, con papas a la francesa y refresco del sabor que prefieras',
         longDescription:'Perro con fríjoles, chilli, queso y beicon y una lámina de tocino que recubre la salchica',
-        price:22000
+        price:22000,
+        units:1,
     },
     {
         id:7777777777,
         name:'Asquerositos',
         category:'hotDog',
-        image:'../img/perro-asquerosito.jpg', 
+        image:'../assets/dog-3.jpg', 
         shortDescription:'Perro caliente con receta venezolana, con papas a la francesa y refresco del sabor que prefieras',
         longDescription:'Perro con salsa barbacoa, salsa de maíz, aguacate, queso rallado, mostaza, mayonesa, salsa de tomate y la cebolla',
-        price:13000
+        price:13000,
+        units:1,
     },
     {
         id:8888888888,
         name:'Perro Caliente Tradicional',
         category:'hotDog',
-        image:'../img/perro-comun.jpg', 
+        image:'../assets/dog-4.jpg', 
         shortDescription:'Perro caliente tradicional con receta de la casa, con papas a la francesa y refresco del sabor que prefieras',
         longDescription:'Perro con salsas al gusto, papas forforito al rededor de la salchicha y cebolla',
-        price:11000
+        price:11000,
+        units:1,
     }
 ]
+export default dataMenu;
