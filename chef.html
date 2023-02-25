@@ -38,70 +38,70 @@
   <body>
     <div id="app">
       <div class="container">
-        <h2 class="text-center p-3 text-menu" id="nuestroMenu">COCINA</h2>
+        <div class="table-container">
+          <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">
+            Órdenes pendientes
+          </h3>
 
-        <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">
-          Órdenes pendientes
-        </h3>
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Items</th>
-              <th scope="col">Estado</th>
-              <th scope="col">Detalles</th>
-              <th scope="col">Acción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <template v-for="order in orders">
-              <tr
-                v-if="order.state === 'Pagado' ||order.state === 'En preparación' "
-              >
-                <th scope="row">{{ order.id }}</th>
-                <td>
-                  <ul>
-                    <li v-for="item in order.items">
-                      {{ item.amount }} {{ item.name }}
-                    </li>
-                  </ul>
-                </td>
-                <td>{{ order.state }}</td>
-                <td>
-                  <button
-                    @click="setOrderDetails(order)"
-                    type="button"
-                    class="btn btn-primary"
-                  >
-                    Detalles
-                  </button>
-                </td>
-                <td>
-                  <button
-                    v-if="order.state ==='Pagado'"
-                    @click="cookOrder(order.id)"
-                    type="button"
-                    class="btn btn-primary btn-first"
-                  >
-                    Preparar
-                  </button>
-                  <button
-                    v-else-if="order.state==='En preparación'"
-                    @click="cookOrder(order.id)"
-                    type="button"
-                    class="btn btn-primary btn-first"
-                  >
-                    Finalizar
-                  </button>
-                </td>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Items</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Detalles</th>
+                <th scope="col">Acción</th>
               </tr>
-            </template>
-          </tbody>
-        </table>
-        <button @click="logout" type="button" class="btn btn-danger mt-5">
-          Logout
-        </button>
+            </thead>
+            <tbody>
+              <template v-for="order in orders">
+                <tr
+                  v-if="order.state === 'Pagado' ||order.state === 'En preparación' "
+                >
+                  <th scope="row">{{ order.id }}</th>
+                  <td>
+                    <ul>
+                      <li v-for="item in order.items">
+                        {{ item.amount }} {{ item.name }}
+                      </li>
+                    </ul>
+                  </td>
+                  <td>{{ order.state }}</td>
+                  <td>
+                    <button
+                      @click="setOrderDetails(order)"
+                      type="button"
+                      class="btn btn-primary"
+                    >
+                      Detalles
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      v-if="order.state ==='Pagado'"
+                      @click="cookOrder(order.id)"
+                      type="button"
+                      class="btn btn-primary btn-first"
+                    >
+                      Preparar
+                    </button>
+                    <button
+                      v-else-if="order.state==='En preparación'"
+                      @click="cookOrder(order.id)"
+                      type="button"
+                      class="btn btn-primary btn-first"
+                    >
+                      Finalizar
+                    </button>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+          <button @click="logout" type="button" class="btn btn-danger mt-5">
+            Logout
+          </button>
+        </div>
       </div>
     </div>
     <script
