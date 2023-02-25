@@ -104,7 +104,7 @@ createApp({
       localStorage.setItem('orders', JSON.stringify(this.ordersToPay))
       this.ordersPlaced.length = 0
       localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
-      alert('aca se abre la pasarela de pagos')
+      //alert('aca se abre la pasarela de pagos')
 
       //Luego cuando ya esta pago, hay que ambiar el estado de la orden
     },

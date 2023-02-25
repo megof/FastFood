@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/assets/B-2.png" rel="shortcut icon" />
+    <meta name="theme-color" content="#a90b30" />
+    <link rel="apple-touch-icon" href="/assets/B-2.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Inicio</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- Header -->
+        <header>
+            <div class="navbar navbar-expand-lg navbar-dark nav-bar-home" id="navbar">
+                <div class="container d-flex justify-content-center align-items-center">
+                    <div class="navbar-expand-lg d-flex justify-content-center align-items-center">
+                        <a href="index.html" class="navbar-brand fs-2 fw-bold text-uppercase p-3 fw-semibold"><span
+                                class="ms-4 logo-container">LA</span><img class="logo m-2" src="/assets/B-2.png"
+                                alt="Logo" /></a>
+                        <button class="navbar-toggler m-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navegacion">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div id="navegacion" class="collapse navbar-collapse nav-bar-links">
+                        <nav
+                            class="navbar-nav container d-flex flex-md-row justify-content-center align-items-center text-center gap-4 my-3">
+                            <a class="text-decoration-none w-50 d-flex justify-content-center" href="#nuestroMenu"><span
+                                    class="material-symbols-outlined">
+                                    restaurant_menu </span>Menú</a>
+                            <a class="text-decoration-none w-50 d-flex justify-content-center" href="#users"
+                                data-bs-toggle="offcanvas"><span class="material-symbols-outlined"> login
+                                </span>Login</a>
+                            <a class="text-decoration-none w-50 d-flex justify-content-center shopping" href="#menu"
+                                data-bs-toggle="offcanvas" :class="onAnimation"><span
+                                    class="material-symbols-outlined d-flex justify-content-center align-items-center">
+                                    shopping_cart
+                                    <sup class="text-center item-in-cart">{{
+                                        ordersPlaced.length
+                                        }}</sup>
+                                    <!--- La funcion de agregar el carrito debe cambiar la cantidad ------>
+                                </span></a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-img">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="home-content">
+                                <div class="text-1 container-md">
+                                    <h2 class="text-b">La B hamburgers</h2>
+                                    <div class="star d-flex justify-content-center align-items-center gap-4">
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                    </div>
+                                    <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="home-content-2">
+                                <div class="text-1 container-md">
+                                    <h2 class="text-b">La B hamburgers</h2>
+                                    <div class="star d-flex justify-content-center align-items-center gap-4">
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                    </div>
+                                    <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="home-content-3">
+                                <div class="text-1 container-md">
+                                    <h2 class="text-b">La B hamburgers</h2>
+                                    <div class="star d-flex justify-content-center align-items-center gap-4">
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                        <i class="fas fa-star fs-1"></i>
+                                    </div>
+                                    <span class="text-info">La mejor opción en Hamburguesas y Hot Dogs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="offcanvas-footer text-center my-3">
+                            <button class="btn btn-primary btn-pagar">Pagar Carrito</button>
+                        </div>
+                    </div>
+
+                    <div id="users" class="offcanvas offcanvas-start text-bg-dark font-canvas">
+                        <div class="offcanvas-header">
+                            <h2 class="offcanvas-title text-center"><i class="fa-regular fa-user fs-1"></i> Escoge Tu
+                                Rol
+                            </h2>
+                            <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="nav flex-column-reverse gap-4">
+                                <li class="nav-item text-center">
+                                    <h2>Administrador</h2>
+                                    <button @click="goToAdmin" type="button"
+                                        class="btn btn-primary">Administrador</button>
+                                </li>
+                                <li class="nav-item text-center">
+                                    <h2>Cocinero</span>
+                                        <button @click="goToChef" type="button"
+                                            class="btn btn-primary">Cocinero</button>
+                                </li>
+                                <li class="nav-item text-center">
+                                    <h2>Mesero</h2>
+                                    <button @click="goToWaiter" type="button" class="btn btn-primary">Mesero</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+        </header>
+        <!-- Fin Header -->
+
+        <!-- Cards -->
+        <div class="row my-5">
+            <h2 class="text-center p-3 text-menu" id="nuestroMenu">Nuestro Menú</h2>
+            <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hamburguesas</h3>
+            <div
+                class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row gap-4 my-3">
+                <div class="card h-100" v-for="(item,index) in dataMenu.filter(el=>el.category==='burger')">
+                    <img :src="item.image" class="card-img-top" alt="b-1" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ item.name }}</h5>
+                        <p class="card-text text-center text-400">
+                            {{ item.shortDescription }}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <h5 class="card-text text-center">
+                            ${{
+                            item.price.toLocaleString('es-ES', {
+                            style: 'currency',
+                            currency: 'COP',
+                            maximumFractionDigits: 0
+                            })
+                            }}
+                        </h5>
+                        <div class="cart d-flex justify-content-center align-items-center gap-2">
+                            <button class="btn btn-primary btn-first" @click="decreaseUnits" :data-id="item.id">
+                                -
+                            </button>
+                            <input class="form-control text-center" type="number" placeholder="Cantidad" readonly
+                                :value="item.units" />
+                            <button class="btn btn-primary btn-first" @click="increaseUnits" :data-id="item.id">
+                                +
+                            </button>
+                        </div>
+                        <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" :id="item.id" @click="deployModal">
+                            Agregar Al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">Hot Dogs</h3>
+            <div
+                class="container col-md-10 d-flex justify-content-center align-items-center flex-column flex-md-row gap-4 my-3">
+                <div class="card h-100" v-for="item in dataMenu.filter(el=>el.category==='hotDog')">
+                    <img :src="item.image" class="card-img-top" alt="h-1" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ item.name }}</h5>
+                        <p class="card-text text-center text-400">
+                            {{ item.shortDescription }}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <h5 class="card-text text-center">
+                            ${{
+                            item.price.toLocaleString('es-ES', {
+                            style: 'currency',
+                            currency: 'COP',
+                            maximumFractionDigits: 0
+                            })
+                            }}
+                        </h5>
+                        <div class="cart d-flex justify-content-center align-items-center gap-2">
+                            <button class="btn btn-primary btn-first" @click="decreaseUnits" :data-id="item.id">
+                                -
+                            </button>
+                            <input class="form-control text-center" type="number" placeholder="Cantidad" readonly
+                                :value="item.units" />
+                            <button class="btn btn-primary btn-first" @click="increaseUnits" :data-id="item.id">
+                                +
+                            </button>
+                        </div>
+                        <button class="btn btn-primary btn-first text-center w-100 my-3" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" :id="item.id" @click="deployModal">
+                            Agregar Al Carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin Cards -->
+
+            <!-- Modal -->
+            <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title display-6 fw-normal" id="exampleModalLabel">
+                                {{ modalInformation.name }}
+                            </h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body w-75 mx-auto">
+                            <img :src="modalInformation.image" alt="mexicana" class="d-block mx-auto w-100 rounded" />
+                            <p class="card-text text-center mt-3">
+                                {{ modalInformation.longDescription }}
+                            </p>
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <button class="btn btn-primary btn-first text-center" @click="decreaseUnitsModal">
+                                    -
+                                </button>
+                                <input type="number" readonly class="form-control text-center" v-model="
+                                    numberOfUnits" />
+                                <button class="btn btn-primary btn-first text-center" @click=" increaseUnitsModal">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="w-75 mx-auto d-flex justify-content-center gap-3">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button type="button" class="btn btn-primary btn-first text-center"
+                                    @click=" confirmOrder">
+                                    Confirmar el pedido
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Modal -->
+
+        <!-- Button Scroll Top -->
+        <button class="btn btn-primary btn-scroll">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Fin Button Scroll Top -->
+
+        <!-- OFF CANVAS -->
+        <div id="menu" class="offcanvas offcanvas-end text-bg-dark font-canvas">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title text-center">
+                    <span class="material-symbols-outlined fs-1"> shopping_cart </span>Carrito De Compras
+                </h2>
+                <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <h3 class="text-center">Tu Carrito</h3>
+                <ul class="nav flex-column">
+                    <ul class="list-group list-group">
+                        <div v-for="order in ordersPlaced">
+                            <li class="list-group-item d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="fw-light">
+                                        {{ order.amount }} {{ order.name }}
+                                    </div>
+
+                                    $ {{ order.priceTotal }}
+                                </div>
+                                <button @click="deleteOrderItem(order.id)" type="button" class="btn btn-danger ms-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z">
+                                        </path>
+                                        <path fill-rule="evenodd"
+                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </li>
+                        </div>
+                    </ul>
+                </ul>
+
+                <div v-if="ordersPlaced.length!==0" class="text-center">
+                    <h3 class="mt-3 text-center">Total:</h3>
+                    <span> $ {{ currentTotal }}</span>
+                </div>
+
+                <div v-else="ordersPlaced.length===0" class="text-center">
+
+                    <div class="alert alert-danger" role="alert">
+                        Aún no tienes productos en tu carrito. Añade ahora los mejores productos de "La B"!
+                    </div>
+                </div>
+
+                <!-- Este botón abre la pasarela de pagos -->
+                <button v-if="ordersPlaced.length!==0" data-bs-toggle="modal" data-bs-target="#paymodal"
+                    class="btn btn-primary text-center w-100 my-3 btn-pagar">
+                    Pagar orden
+                </button>
+            </div>
+        </div>
+
+        <div id="users" class="offcanvas offcanvas-start text-bg-dark font-canvas">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title text-center">
+                    <i class="fa-regular fa-user fs-1"></i> Escoge Tu Rol
+                </h2>
+                <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-column-reverse gap-4">
+                    <li class="nav-item text-center">
+                        <h2>Administrador</h2>
+                    </li>
+                    <li class="nav-item text-center">
+                        <h2>Cocinero</h2>
+                    </li>
+                    <li class="nav-item text-center">
+                        <h2>Mesero</h2>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- FIN OFF CANVAS -->
+        <!--Pagos-->
+        <div class="modal fade" id="paymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-md-11 text-center">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                Fast Food's
+                            </h1>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">Tarjeta de crédito</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                                    type="button" role="tab" aria-controls="profile" aria-selected="false">Tarjeta de
+                                    débito</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                                    type="button" role="tab" aria-controls="contact" aria-selected="false">PSE</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row gy-3">
+                                    <div class="col-md-6">
+                                        <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
+                                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                                        <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
+                                        <div class="invalid-feedback">
+                                            Se requiere el nombre en la tarjeta
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
+                                        <input type="number" class="form-control" id="cc-number" placeholder=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Se requiere número de tarjeta de crédito
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cc-expiration" class="form-label">Vencimiento</label>
+                                        <input type="text" class="form-control" id="cc-expiration" placeholder=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Fecha de vencimiento requerida
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cc-cvv" class="form-label">CVV</label>
+                                        <input type="number" class="form-control" id="cc-cvv" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            Código de seguridad requerido
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row gy-3">
+                                    <div class="col-md-6">
+                                        <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
+                                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                                        <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
+                                        <div class="invalid-feedback">
+                                            Se requiere el nombre en la tarjeta
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="cc-number" class="form-label">Número de tarjeta de débito</label>
+                                        <input type="number" class="form-control" id="cc-number" placeholder=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Se requiere número de tarjeta de débito
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cc-expiration" class="form-label">Vencimiento</label>
+                                        <input type="text" class="form-control" id="cc-expiration" placeholder=""
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Fecha de vencimiento requerida
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="cc-cvv" class="form-label">CVV</label>
+                                        <input type="number" class="form-control" id="cc-cvv" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            Código de seguridad requerido
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="row gy-3">
+                                    <div class="col-md-6">
+                                        <label for="cc-name" class="form-label">Correo electrónico</label>
+                                        <input type="email" class="form-control" id="cc-name" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            Se requiere el correo registrado en PSE
+                                        </div>
+                                    </div>
+                                    <hd>
+                                        <div class="col-md-6">
+                                            <label for="cc-number" class="form-label">Nombre completo</label>
+                                            <input type="text" class="form-control" id="cc-number" placeholder=""
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Se requiere nombre registrado en PSE
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary" @click="createNewOrderToPay">Pagar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin pagos-->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <script src="js/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
