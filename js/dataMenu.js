@@ -87,4 +87,3 @@ const dataMenu = [
         units:1,
     }
 ]
-export default dataMenu;

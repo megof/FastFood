@@ -12,25 +12,25 @@ const app = Vue.createApp({
   },
   methods: {
     // Set order details
-    setOrderDetails (order) {
+    setOrderDetails () {
       // Set order product details
-      this.setProductDetailsAtOrder(order)
+      for(let i = 0; i < this.orders.length; i++){
+        this.setProductDetailsAtOrder(this.orders[i]);
+      }
     },
     // Set product details at order
     setProductDetailsAtOrder (order) {
-      for (let i = 0; i < order.products.length; i++) {
+      for (let i = 0; i < order.items.length; i++) {
         // Get product
         const productInfo = this.food.find(
-          food => food.id == order.products[i].id
+          food => food.id == order.items[i].idProduct
         )
         // Set product info
-        order.products[i] = {
-          total: order.products[i].amount * productInfo.price,
-          ...order.products[i],
+        order.items[i] = {
+          total: order.items[i].amount * productInfo.price,
+          ...order.items[i],
           ...productInfo
         }
-        // Log product info
-        console.log(order.products[i])
       }
     },
     // Get products from local storage
@@ -146,6 +146,8 @@ const app = Vue.createApp({
   mounted () {
     // Get products from local storage
     this.getFoodFromLocalStorage()
+    // Set order details
+    this.setOrderDetails()
   }
 })
 

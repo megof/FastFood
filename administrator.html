@@ -194,19 +194,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="product in order.products" :key="order.id">
+                                <tr v-for="item in order.items" :key="order.id">
                                     <td class="text-center text-light">
                                         <img 
-                                            :src="product.image" 
+                                            :src="item.image" 
                                             alt="Imagen del producto"
                                             style="width: 50px; height: 50px;"
                                             class="rounded-circle"
                                         >
                                     </td>
-                                    <td class="text-center text-light">{{product.name}}</td>
-                                    <td class="text-center text-light">{{product.amount}}</td>
-                                    <td class="text-center text-light">${{product.price}}</td>
-                                    <td class="text-center text-light">${{product.total}}</td>
+                                    <td class="text-center text-light">{{item.name}}</td>
+                                    <td class="text-center text-light">{{item.amount}}</td>
+                                    <td class="text-center text-light">${{item.price}}</td>
+                                    <td class="text-center text-light">${{item.total}}</td>
                                 </tr>
                             </tbody>
                         </table>
