@@ -63,15 +63,7 @@
                   </ul>
                 </td>
                 <td>{{ order.state }}</td>
-                <td>
-                  <button
-                    @click="setOrderDetails(order)"
-                    type="button"
-                    class="btn btn-primary"
-                  >
-                    Detalles
-                  </button>
-                </td>
+              
                 <td>
                   <button
                   v-if="order.state==='Listo para entrega'"
