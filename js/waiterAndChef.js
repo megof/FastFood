@@ -92,7 +92,7 @@ const app = Vue.createApp({
       Object.assign(this.workers, worker)
       localStorage.setItem('orders', JSON.stringify(this.orders))
       localStorage.setItem('workers', JSON.stringify(this.workers))
-      alert('Entrega asignada exitosamente al domiciliario')
+      Swal.fire('Entrega asignada exitosamente al domiciliario')
       this.countDeliveryTime(worker)
     },
     countDeliveryTime (worker) {
@@ -126,13 +126,23 @@ const app = Vue.createApp({
         localStorage.setItem('orders', JSON.stringify(this.orders))
         console.log('order to cook', orderToCook)
       } else if (orderToCook.state === 'En preparación') {
-        alert(
-          'Al parecer has finalizado la preparación de este pedido. Enviar a domicilios?'
-        )
-        orderToCook.state = 'Listo para entrega'
-        Object.assign(this.orders, orderToCook)
-        localStorage.setItem('orders', JSON.stringify(this.orders))
-        console.log('order to cook', orderToCook)
+        Swal.fire({
+          title: 'Preparación finalizada!',
+          text: 'Al parecer has finalizado la preparación de este pedido. Enviar a domicilios?',
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: 'Enviar',
+          denyButtonText: `No enviar`
+        }).then(result => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            orderToCook.state = 'Listo para entrega'
+            Object.assign(this.orders, orderToCook)
+            localStorage.setItem('orders', JSON.stringify(this.orders))
+            console.log('order to cook', orderToCook)
+          } else if (result.isDenied) {
+          }
+        })
       }
     },
     logout () {
