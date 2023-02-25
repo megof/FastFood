@@ -205,6 +205,27 @@ input[type="password"]:focus {
   background-color: transparent !important;
   color: var(--white);
 }
+.employee {
+  width: 80% !important;
+  background-color: var(--white);
+  border: none !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid var(--black) !important;
+  box-shadow: 2px 2px 0px var(--color-4) !important;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+}
+.employee img {
+  max-width: 7rem;
+}
+.employee:hover {
+  transform: scale(1.05);
+  filter: contrast(110%);
+  color: var(--color-4);
+  background-color: #00000098;
+  border: 1px solid var(--color-4) !important;
+}
 
 /* esta clase se le agrega al carrito es decir al elemento "a "que contiene la clase "shopping" cuando tenga items, esto con la finalizada de que la animacion refleje un cambio de state en la cantidad de articulos que tiene el carrito*/
 .shopping-active {
