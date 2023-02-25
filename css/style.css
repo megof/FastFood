@@ -195,6 +195,16 @@ body {
   animation: pulse-black 1.25s ease infinite;
 }
 
+.text-custom{
+  font-family: cursive;
+}
+#email::placeholder,#password::placeholder{
+  font-size: 16px;
+  font-weight: normal;
+  font-family: cursive;
+}
+
+
 @keyframes pulse-black {
   0% {
     transform: scale(0.95);
