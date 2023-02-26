@@ -187,6 +187,10 @@ createApp({
       )
       localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
     },
+    deleteAllOrders(){
+      this.ordersPlaced = []
+      localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
+    },
     goToAdmin () {
       window.open('../administrator.html', '_self')
     },
