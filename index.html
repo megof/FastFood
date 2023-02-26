@@ -280,24 +280,22 @@
                             <li class="list-group-item d-flex align-items-center">
                                 <div class="flex-grow-1">
                                     <div class="horizontal-item">
-                                        <img class="img-small" :src="order.img"/>
+                                        <img class="img-small" :src="order.img" />
 
                                         <div class="vertical-item">
                                             <div class="fw-light">
                                                 {{ order.amount }} {{ order.name }}
                                             </div>
-        
+
                                             $ {{
-                                                order.priceTotal.toLocaleString('es-ES', {
-                                                style: 'currency',
-                                                currency: 'COP',
-                                                maximumFractionDigits: 0
-                                                })
-                                                }}
-                                            </div>
+                                            order.priceTotal.toLocaleString('es-ES', {
+                                            style: 'currency',
+                                            currency: 'COP',
+                                            maximumFractionDigits: 0
+                                            })
+                                            }}
                                         </div>
-                                    
-                                    
+                                    </div>
                                 </div>
                                 <button @click="deleteOrderItem(order.id)" type="button" class="btn btn-danger ms-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -330,8 +328,8 @@
                 </div>
 
                 <!-- Este botón abre la pasarela de pagos -->
-                <button v-if="ordersPlaced.length!==0" @click="createNewOrderToPay"
-                    class="btn btn-primary text-center w-100 my-3 btn-buy">
+                <button v-if="ordersPlaced.length!==0"
+                    class="btn btn-primary text-center w-100 my-3 btn-buy"  data-bs-toggle="modal" data-bs-target="#paymodal">
                     Pagar orden
                 </button>
                 <button v-if="ordersPlaced.length!==0" @click="deleteAllOrders"
@@ -366,7 +364,7 @@
             </div>
             <div v-if="is.login" class="offcanvas-body">
                 <div class="nav flex-column justify-content-center">
-                    
+
                     <button @click="goToChef" class=" employee mb-3">
                         <h3 class="text-center">Chef</h3>
                         <div class="container">
