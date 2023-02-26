@@ -54,15 +54,11 @@ const app = Vue.createApp({
       localStorage.setItem('food', JSON.stringify(this.food))
     },
     syncLocalStorage () {
-      console.log(localStorage.getItem('orders').length)
-
       if (
         localStorage.getItem('workers') === null ||
         localStorage.getItem('workers') === undefined
       ) {
-        console.log(' es null')
         localStorage.setItem('workers', JSON.stringify(this.workers))
-        //localStorage.setItem('orders', JSON.stringify(this.orders))
       } else {
         localStorage.setItem('workers', localStorage.getItem('workers'))
         const toUpdateworkers = JSON.parse(localStorage.getItem('workers'))
@@ -78,7 +74,6 @@ const app = Vue.createApp({
         localStorage.getItem('orders') === undefined
       ) {
         localStorage.setItem('orders', JSON.stringify(this.orders))
-        //localStorage.setItem('orders', JSON.stringify(this.orders))
       } else {
         localStorage.setItem('orders', localStorage.getItem('orders'))
         const toUpdateOrders = JSON.parse(localStorage.getItem('orders'))
@@ -98,7 +93,6 @@ const app = Vue.createApp({
     countDeliveryTime (worker) {
       this.ordersTimeout.push(this.orderToChange)
       let timeout = setTimeout(() => {
-        console.log('en timeout')
         worker.status = 'Disponible'
         Object.assign(this.workers, worker)
         this.ordersTimeout[0].state = 'Entregada'
@@ -124,7 +118,6 @@ const app = Vue.createApp({
         orderToCook.state = 'En preparación'
         Object.assign(this.orders, orderToCook)
         localStorage.setItem('orders', JSON.stringify(this.orders))
-        console.log('order to cook', orderToCook)
       } else if (orderToCook.state === 'En preparación') {
         Swal.fire({
           title: 'Preparación finalizada!',
@@ -139,7 +132,6 @@ const app = Vue.createApp({
             orderToCook.state = 'Listo para entrega'
             Object.assign(this.orders, orderToCook)
             localStorage.setItem('orders', JSON.stringify(this.orders))
-            console.log('order to cook', orderToCook)
           } else if (result.isDenied) {
           }
         })
@@ -151,7 +143,6 @@ const app = Vue.createApp({
   },
   created () {
     this.syncLocalStorage()
-    console.log('OORDERS', this.orders)
   },
   mounted () {
     // Get products from local storage

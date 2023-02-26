@@ -129,9 +129,7 @@ createApp({
         price: this.modalInformation.price,
         priceTotal: this.modalInformation.price * this.numberOfUnits
       }
-      console.log(this.ordersPlaced,"this.ordersPlacedanr")
       this.ordersPlaced.push(this.currentOrder)
-      console.log(this.ordersPlaced,"this.ordersPlaceddes")
       this.currentOrder={}
      
       this.currentTotal = this.ordersPlaced.reduce(
@@ -147,31 +145,19 @@ createApp({
           'Su pedido ha sido realizado, por favor diríjase al carrito de compras para confirmar la compra.',
         showConfirmButton: true
       })
-      console.log(this.ordersPlaced,"this.ordersPlaceFINAL")
     },
 
     createNewOrderToPay () {
-
-     
-      console.log("this.ordersPlaced2___",this.ordersPlaced[0])
-      //this.ordersPlaced=JSON.parse(localStorage.getItem('ordersPlaced'))
-
-     
-
-
       const totalToPay = this.ordersPlaced.reduce(
         (acc, cur) => acc + cur.priceTotal,
         0
       )
-      console.log('total', totalToPay)
-
       this.orders.push({
         id: Math.round(Math.random() * 500),
         items: this.ordersPlaced,
         state: 'Pagado',
         total: totalToPay
       })
-      console.log(this.orders,"ORDERS")
       localStorage.setItem('orders', JSON.stringify(this.orders))
       this.ordersPlaced=[]
       localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
@@ -195,10 +181,31 @@ createApp({
       window.open('../administrator.html', '_self')
     },
     goToChef () {
-      window.open('../chef.html', '_self')
+
+      console.log("leng",this.orders.length)
+      localStorage.setItem('len', JSON.stringify(this.orders.length))
+      if(this.orders.length>0){
+        window.open('../chef.html', '_self')
+      } else{
+        Swal.fire({
+          icon: "info",
+          title: "Oops...",
+          text: "Parece que no se han realizado pedidos hoy!",
+        });
+      }
+     
     },
     goToWaiter () {
-      window.open('../waiter.html', '_self')
+      console.log("leng",this.orders.length)
+      if(this.orders.length>0){
+      window.open('../waiter.html', '_self')}
+      else{
+        Swal.fire({
+          icon: "info",
+          title: "Oops...",
+          text: "Parece que no se han realizado pedidos hoy!",
+        });
+      }
     }
   },
   beforeMount () {
@@ -225,7 +232,6 @@ createApp({
       (acc, cur) => acc + cur.priceTotal,
       0
     )
-    console.log('Currenttotal', this.currentTotal)
   },
   created() {
     let user = JSON.parse(sessionStorage.getItem("user"));
