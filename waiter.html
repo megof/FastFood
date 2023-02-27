@@ -1,184 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/assets/B-2.png" rel="shortcut icon" />
-    <meta name="theme-color" content="#a90b30" />
-    <link rel="apple-touch-icon" href="/assets/B-2.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bungee&family=Open+Sans:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Mesero</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  </head>
 
-  <body>
-    <div id="app">
-      <div class="container">
-        <h3 class="text-center mt-5 mb-3 hamburgers col-md-10">
-          Órdenes por entregar
-        </h3>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Items</th>
-              <th scope="col">Estado</th>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/assets/B-2.png" rel="shortcut icon" />
+  <meta name="theme-color" content="#a90b30" />
+  <link rel="apple-touch-icon" href="/assets/B-2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Mesero</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <h3 class="text-center mt-5 mb-3 hamburgers col-md-12">
+        Órdenes por entregar
+      </h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Items</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="order in orders">
+            <tr v-if="order.state === 'Listo para entrega' ||order.state === 'En entrega' ">
+              <th scope="row">{{ order.id }}</th>
+              <td>
+                <ul>
+                  <li v-for="item in order.items">
+                    {{ item.amount }} {{ item.name }}
+                  </li>
+                </ul>
+              </td>
+              <td>{{ order.state }}</td>
+
+              <td>
+                <button v-if="order.state==='Listo para entrega'" @click="dispatch(order.id)" type="button"
+                  class="btn btn-primary btn-first" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Despachar
+                </button>
+
+                <button v-else-if="order.state==='En entrega'" @click="dispatch(order.id)" type="button"
+                  class="btn btn-primary btn-first" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
+                  Despachar
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            <template v-for="order in orders">
-              <tr
-                v-if="order.state === 'Listo para entrega' ||order.state === 'En entrega' "
-              >
-                <th scope="row">{{ order.id }}</th>
-                <td>
-                  <ul>
-                    <li v-for="item in order.items">
-                      {{ item.amount }} {{ item.name }}
-                    </li>
-                  </ul>
-                </td>
-                <td>{{ order.state }}</td>
-              
-                <td>
-                  <button
-                  v-if="order.state==='Listo para entrega'"
-                    @click="dispatch(order.id)"
-                    type="button"
-                    class="btn btn-primary btn-first"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
-                    Despachar
-                  </button>
+          </template>
+        </tbody>
+      </table>
+      <button @click="logout" type="button" class="btn btn-danger mt-5">
+        Logout
+      </button>
+    </div>
 
-                  <button
-                  v-else-if="order.state==='En entrega'"
-                    @click="dispatch(order.id)"
-                    type="button"
-                    class="btn btn-primary btn-first"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    disabled
-                  >
-                    Despachar
-                  </button>
-                </td>
-              </tr>
-            </template>
-          </tbody>
-        </table>
-        <button @click="logout" type="button" class="btn btn-danger mt-5">
-          Logout
-        </button>
-      </div>
+    <!-- DOMICILIARIOS: -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Domiciliarios
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card-group">
+              <div class="card" v-for="worker in workers">
+                <img :src="worker.photo" alt="photo" />
+                <div class="card-body">
+                  <h5 class="card-title">{{ worker.name }}</h5>
+                  <p class="card-text">
+                    <button v-if="worker.status==='Disponible'" @click="changeOrderStatus(worker)" href="#"
+                      class="btn btn-primary btn-first" data-bs-dismiss="modal">
+                      Asignar domicilio
+                    </button>
 
-      <!-- DOMICILIARIOS: -->
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Domiciliarios
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="card-group">
-                <div class="card" v-for="worker in workers">
-                  <img :src="worker.photo" alt="photo" />
-                  <div class="card-body">
-                    <h5 class="card-title">{{ worker.name }}</h5>
-                    <p class="card-text">
-                      <button
-                        v-if="worker.status==='Disponible'"
-                        @click="changeOrderStatus(worker)"
-                        href="#"
-                        class="btn btn-primary btn-first"
-                        data-bs-dismiss="modal"
-                      >
-                        Asignar domicilio
-                      </button>
-
-                      <button
-                        v-else-if="worker.status==='Despachando'"
-                        @click="changeOrderStatus(worker)"
-                        href="#"
-                        class="btn btn-secondary"
-                        disabled
-                      >
-                        Asignar domicilio
-                      </button>
-                    </p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted"> {{ worker.status }}</small>
-                  </div>
+                    <button v-else-if="worker.status==='Despachando'" @click="changeOrderStatus(worker)" href="#"
+                      class="btn btn-secondary" disabled>
+                      Asignar domicilio
+                    </button>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted"> {{ worker.status }}</small>
                 </div>
               </div>
-              
             </div>
 
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Cerrar
-              </button>
-            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cerrar
+            </button>
           </div>
         </div>
       </div>
-     
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!--Data workers-->
-    <script src="./js/dataWorkers.js"></script>
-    <!--Data orders-->
-    <script src="./js/dataOrders.js"></script>
-    <!--Main-->
-    <script src="./js/waiterAndChef.js"></script>
-  </body>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!--Data workers-->
+  <script src="./js/dataWorkers.js"></script>
+  <!--Data orders-->
+  <script src="./js/dataOrders.js"></script>
+  <!--Main-->
+  <script src="./js/waiterAndChef.js"></script>
+</body>
+
 </html>

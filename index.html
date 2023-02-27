@@ -387,31 +387,34 @@
             </div>
         </div>
         <!-- FIN OFF CANVAS -->
+
         <!--Pagos-->
         <div class="modal fade" id="paymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="col-md-11 text-center">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                Fast Food's
+                            <h1 class="text-center modal-title fs-5" id="exampleModalLabel">
+                                <div href="index.html" class=" fs-6 fw-bold text-uppercase p-3 fw-semibold"><span
+                                        class="ms-4 logo-container">LA</span><img class="logo m-2" src="/assets/B-2.png"
+                                        alt="Logo" /></div>
                             </h1>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item col-md-4" role=" presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
                                     data-bs-target="#home" type="button" role="tab" aria-controls="home"
                                     aria-selected="true">Tarjeta de crédito</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item col-md-4" role=" presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                                     type="button" role="tab" aria-controls="profile" aria-selected="false">Tarjeta de
                                     débito</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item col-md-4" role="presentation">
                                 <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
                                     type="button" role="tab" aria-controls="contact" aria-selected="false">PSE</button>
                             </li>
@@ -419,7 +422,7 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row gy-3">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
                                         <input type="text" class="form-control" id="cc-name" placeholder="" required>
                                         <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
@@ -427,23 +430,23 @@
                                             Se requiere el nombre en la tarjeta
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
-                                        <input type="number" max="9999" class="form-control" id="cc-number" placeholder=""
-                                            required>
+                                        <input type="number" max="9999" class="form-control" id="cc-number"
+                                            placeholder="" required>
                                         <div class="invalid-feedback">
                                             Se requiere número de tarjeta de crédito
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <label for="cc-expiration" class="form-label">Vencimiento</label>
-                                        <input type="month" min="2023-02" class="form-control" id="cc-expiration" placeholder=""
-                                            required>
+                                        <input type="month" min="2023-02" class="form-control" id="cc-expiration"
+                                            placeholder="" required>
                                         <div class="invalid-feedback">
                                             Fecha de vencimiento requerida
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label for="cc-cvv" class="form-label">CVV</label>
                                         <input type="number" class="form-control" id="cc-cvv" placeholder="" required>
                                         <div class="invalid-feedback">
@@ -454,7 +457,7 @@
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="row gy-3">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
                                         <input type="text" class="form-control" id="cc-name" placeholder="" required>
                                         <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
@@ -462,7 +465,7 @@
                                             Se requiere el nombre en la tarjeta
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="cc-number" class="form-label">Número de tarjeta de débito</label>
                                         <input type="number" class="form-control" id="cc-number" placeholder=""
                                             required>
@@ -470,15 +473,15 @@
                                             Se requiere número de tarjeta de débito
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <label for="cc-expiration" class="form-label">Vencimiento</label>
-                                        <input type="month" min="2023-02" class="form-control" id="cc-expiration" placeholder=""
-                                            required>
+                                        <input type="month" min="2023-02" class="form-control" id="cc-expiration"
+                                            placeholder="" required>
                                         <div class="invalid-feedback">
                                             Fecha de vencimiento requerida
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label for="cc-cvv" class="form-label">CVV</label>
                                         <input type="number" class="form-control" id="cc-cvv" placeholder="" required>
                                         <div class="invalid-feedback">
@@ -489,7 +492,7 @@
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="row gy-3">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="cc-name" class="form-label">Correo electrónico</label>
                                         <input type="email" class="form-control" id="cc-name" placeholder="" required>
                                         <div class="invalid-feedback">
@@ -497,7 +500,7 @@
                                         </div>
                                     </div>
                                     <hd>
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <label for="cc-number" class="form-label">Nombre completo</label>
                                             <input type="text" class="form-control" id="cc-number" placeholder=""
                                                 required>
@@ -511,7 +514,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="col-md-12 text-center">
-                            <button class="btn btn-primary" @click="createNewOrderToPay">Pagar</button>
+                            <button class="btn btn-primary btn-buy" @click="createNewOrderToPay">Pagar</button>
                         </div>
                     </div>
                 </div>
