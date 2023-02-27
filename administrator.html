@@ -147,7 +147,7 @@
                         <th class="text-center" scope="row">{{order.id}}</th>
                         <td class="text-center">{{order.state}}</td>
                         <td class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#orderDetailsModal"
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal"
                                 @click="setOrderDetails(order)">
                                 Ver detalles
                             </button>
@@ -161,7 +161,7 @@
         </div>
 
         <!--Order details modal-->
-        <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel"
+        <div class="modal fade modal-lg" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
