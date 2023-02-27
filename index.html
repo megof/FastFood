@@ -328,8 +328,8 @@
                 </div>
 
                 <!-- Este botón abre la pasarela de pagos -->
-                <button v-if="ordersPlaced.length!==0"
-                    class="btn btn-primary text-center w-100 my-3 btn-buy"  data-bs-toggle="modal" data-bs-target="#paymodal">
+                <button v-if="ordersPlaced.length!==0" class="btn btn-primary text-center w-100 my-3 btn-buy"
+                    data-bs-toggle="modal" data-bs-target="#paymodal">
                     Pagar orden
                 </button>
                 <button v-if="ordersPlaced.length!==0" @click="deleteAllOrders"
@@ -353,11 +353,11 @@
                     <div class="mb-3">
                         <label class="form-label" for="users"><i class="fa-solid fa-user d-inline-block me-1"></i>Nombre
                             Usuario</label>
-                        <input v-model="user.name" class="form-control" type="text" id="users">
+                        <input v-model="user.name" class="form-control form-user" type="text" id="users">
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="password"><i class="fa-solid fa-key me-1"></i>Contraseña</label>
-                        <input v-model="user.password" class="form-control" type="password" id="password">
+                        <input v-model="user.password" class="form-control form-password" type="password" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary btn-buy">Entrar</button>
                 </form>

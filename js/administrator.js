@@ -250,6 +250,10 @@ const app = createApp({
                 swal("Éxito", "Producto agregado correctamente", "success");
             }
         },
+        // Method to go to home page
+        logout () {
+            window.open('../index.html', '_self')
+        }
     }
 });
 

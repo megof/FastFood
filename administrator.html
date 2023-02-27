@@ -17,6 +17,11 @@
         v-if="render.options"
         v-cloak
     >
+        <nav class="nav-logout container p-3 d-flex flex-row justify-content-start align-items-center">
+            <button @click="logout" type="button" class="btn btn-danger">
+                Logout
+            </button>
+        </nav>
         <!--Title-->
         <h1>Administrador</h1>
         <!--Add food-->
