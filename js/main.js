@@ -2,7 +2,7 @@ const { createApp } = Vue
 import navBar from './nav.js'
 
 createApp({
-  data () {
+  data() {
     return {
       dataMenu: [], //Productos que ofrece la tienda
       numberOfUnits: 1, //Cantidad de unidades del producto a pedir.
@@ -86,7 +86,7 @@ createApp({
       //Actualizo para el que se muestre en el modal el número que colocó el usuario.
       this.numberOfUnits = food.units
     },
-    decreaseUnits (e) {
+    decreaseUnits(e) {
       //Este es el id que traigo de mi botón.
       let id = Number(e.target.dataset.id)
       //Este es el arreglo que debo modificar y su índice
@@ -98,14 +98,14 @@ createApp({
       //Para el modal
       this.numberOfUnits = food.units
     },
-    decreaseUnitsModal () {
+    decreaseUnitsModal() {
       if (this.numberOfUnits === 1) return
       this.numberOfUnits -= 1
     },
-    increaseUnitsModal () {
+    increaseUnitsModal() {
       this.numberOfUnits += 1
     },
-    deployModal (e) {
+    deployModal(e) {
       //Actualizo la info que se muestra en el modal de confirmar el pedido
       this.numberOfUnits = this.dataMenu.find(
         el => el.id === Number(e.target.id)
@@ -114,12 +114,12 @@ createApp({
         el => el.id === Number(e.target.id)
       )
     },
-    closeModal () {
+    closeModal() {
       const myModalEl = document.getElementById('exampleModal')
       const modal = bootstrap.Modal.getInstance(myModalEl)
       modal.hide()
     },
-    confirmOrder () {
+    confirmOrder() {
       this.currentOrder = {
         id: Math.round(Math.random() * 500),
         idProduct: this.modalInformation.id,
@@ -130,8 +130,8 @@ createApp({
         priceTotal: this.modalInformation.price * this.numberOfUnits
       }
       this.ordersPlaced.push(this.currentOrder)
-      this.currentOrder={}
-     
+      this.currentOrder = {}
+
       this.currentTotal = this.ordersPlaced.reduce(
         (acc, cur) => acc + cur.priceTotal,
         0
@@ -147,7 +147,7 @@ createApp({
       })
     },
 
-    createNewOrderToPay () {
+    createNewOrderToPay() {
       const totalToPay = this.ordersPlaced.reduce(
         (acc, cur) => acc + cur.priceTotal,
         0
@@ -159,11 +159,19 @@ createApp({
         total: totalToPay
       })
       localStorage.setItem('orders', JSON.stringify(this.orders))
-      this.ordersPlaced=[]
+      this.ordersPlaced = []
       localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
-     
+      Swal.fire({
+        icon: "success",
+        title: "Pagado",
+        text: "Muchas gracias por preferir nuestro servicio!",
+      });
+      const myModalEl = document.getElementById('paymodal')
+      const modal = bootstrap.Modal.getInstance(myModalEl)
+      modal.hide()
+
     },
-    deleteOrderItem (id) {
+    deleteOrderItem(id) {
       this.ordersPlaced = this.ordersPlaced.filter(order => {
         return order.id !== id
       })
@@ -173,33 +181,34 @@ createApp({
       )
       localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
     },
-    deleteAllOrders(){
+    deleteAllOrders() {
       this.ordersPlaced = []
       localStorage.setItem('ordersPlaced', JSON.stringify(this.ordersPlaced))
     },
-    goToAdmin () {
+    goToAdmin() {
       window.open('../administrator.html', '_self')
     },
-    goToChef () {
+    goToChef() {
 
-      console.log("leng",this.orders.length)
+      console.log("leng", this.orders.length)
       localStorage.setItem('len', JSON.stringify(this.orders.length))
-      if(this.orders.length>0){
+      if (this.orders.length > 0) {
         window.open('../chef.html', '_self')
-      } else{
+      } else {
         Swal.fire({
           icon: "info",
           title: "Oops...",
           text: "Parece que no se han realizado pedidos hoy!",
         });
       }
-     
+
     },
-    goToWaiter () {
-      console.log("leng",this.orders.length)
-      if(this.orders.length>0){
-      window.open('../waiter.html', '_self')}
-      else{
+    goToWaiter() {
+      console.log("leng", this.orders.length)
+      if (this.orders.length > 0) {
+        window.open('../waiter.html', '_self')
+      }
+      else {
         Swal.fire({
           icon: "info",
           title: "Oops...",
@@ -208,7 +217,7 @@ createApp({
       }
     }
   },
-  beforeMount () {
+  beforeMount() {
     //Localstorage de los productos que tenemos para ofrecer.
     if (localStorage.getItem('food')) {
       this.dataMenu = JSON.parse(localStorage.getItem('food'))
@@ -226,7 +235,7 @@ createApp({
       this.orders = JSON.parse(localStorage.getItem('orders'))
     }
   },
-  mounted () {
+  mounted() {
     navBar()
     this.currentTotal = this.ordersPlaced.reduce(
       (acc, cur) => acc + cur.priceTotal,

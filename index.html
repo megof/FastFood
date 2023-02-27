@@ -429,15 +429,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
-                                        <input type="number" class="form-control" id="cc-number" placeholder=""
+                                        <input type="number" max="9999" class="form-control" id="cc-number" placeholder=""
                                             required>
                                         <div class="invalid-feedback">
                                             Se requiere número de tarjeta de crédito
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         <label for="cc-expiration" class="form-label">Vencimiento</label>
-                                        <input type="text" class="form-control" id="cc-expiration" placeholder=""
+                                        <input type="month" min="2023-02" class="form-control" id="cc-expiration" placeholder=""
                                             required>
                                         <div class="invalid-feedback">
                                             Fecha de vencimiento requerida
@@ -470,9 +470,9 @@
                                             Se requiere número de tarjeta de débito
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         <label for="cc-expiration" class="form-label">Vencimiento</label>
-                                        <input type="text" class="form-control" id="cc-expiration" placeholder=""
+                                        <input type="month" min="2023-02" class="form-control" id="cc-expiration" placeholder=""
                                             required>
                                         <div class="invalid-feedback">
                                             Fecha de vencimiento requerida
